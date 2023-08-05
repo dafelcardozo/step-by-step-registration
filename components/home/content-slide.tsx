@@ -14,6 +14,6 @@ export default function ContentSlide({hasPrevious, hasNext, onBackClicked, onNex
             {children}
         </div>
         {hasPrevious && <Button variant="contained" onClick={onBackClicked}>Go back</Button>}
-        {hasNext && <Button onClick={onNextClicked}>Next Step</Button>}
+        {hasNext && <Button variant="contained" onClick={onNextClicked}>Next Step</Button>}
     </div>);
 }
