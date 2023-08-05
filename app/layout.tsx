@@ -1,10 +1,12 @@
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import cx from "classnames";
-import { sfPro, inter } from "./fonts";
+
 import Nav from "@/components/layout/nav";
-import Footer from "@/components/layout/footer";
 import { Suspense } from "react";
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 export const metadata = {
   title: "Precedent - Building blocks for your Next.js project",
@@ -28,16 +30,19 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(sfPro.variable, inter.variable)}>
-        <div className="fixed h-screen w-full bg-gradient-to-br from-indigo-50 via-white to-cyan-100" />
+      <head>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <title>dwfdafsadf</title>
+      </head>
+      <body>
+        <div/>
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
           <Nav />
         </Suspense>
-        <main className="flex min-h-screen w-full flex-col items-center justify-center py-32">
+        <main>
           {children}
         </main>
-        <Footer />
         <Analytics />
       </body>
     </html>
