@@ -3,12 +3,12 @@ import { AppState } from "./store";
 
 export interface PlanSelectionState {
   plan: string;
-  is_monthly: boolean,
+  is_yearly: boolean,
 }
 
 const initialState: PlanSelectionState = {
   plan: '',
-  is_monthly: false,
+  is_yearly: false,
 };
 
 export const planSelectionSlice = createSlice({
@@ -18,14 +18,14 @@ export const planSelectionSlice = createSlice({
     setPlan(state, action) {
       state.plan = action.payload;
     },
-    setIsMonthly(state, action) {
-        state.is_monthly = action.payload;
+    setIsYearly(state, action) {
+        state.is_yearly = action.payload;
     }
   }
 });
 
-export const { setPlan, setIsMonthly } = planSelectionSlice.actions;
+export const { setPlan, setIsYearly: setIsMonthly } = planSelectionSlice.actions;
 
-//export const planState = (state: AppState) => state..planInfo.authState;
+export const planState = (state: AppState) => state.planInfo;
 
 export default planSelectionSlice.reducer;
