@@ -1,15 +1,15 @@
 import { Button } from '@mui/material';
 import { useDispatch, useSelector} from 'react-redux';
 import {registrationSlice} from '@/components/shared/registrationSlice';
+import {ReduxState} from '@/components/shared/store';
+
 
 export type ContentSlideProps = {
-    hasPrevious: boolean,
-    hasNext: boolean,
     children: any
 }
 
 export default function ContentSlide({ children}:ContentSlideProps) {
-    const {hasPrevious, hasNext }:ContentSlideProps = useSelector(state => state.register);
+    const {hasPrevious, hasNext } = useSelector((state:ReduxState) => state.register);
     const dispatch = useDispatch();
     return (<div>
         <div>

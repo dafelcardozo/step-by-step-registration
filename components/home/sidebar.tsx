@@ -15,7 +15,8 @@ import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import {PropsWithChildren} from 'react';
 import ContentSlide, { ContentSlideProps} from './content-slide';
-import { useDispatch, useSelector} from 'react-redux';
+import { useSelector} from 'react-redux';
+import {ReduxState} from '@/components/shared/store';
 
 
 const drawerWidth = 240;
@@ -25,7 +26,7 @@ const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-o
 export type SideBarProps = PropsWithChildren & ContentSlideProps;
 
 export default function SideBar({children, ...props}:SideBarProps ) {
-  const {step }:ContentSlideProps = useSelector(state => state.register);
+  const {step } = useSelector((state:ReduxState) => state.register);
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />

@@ -1,5 +1,5 @@
 import { authSlice } from "./authSlice";
-import { registrationSlice } from './registrationSlice';
+import { registrationSlice, RegistrationState } from './registrationSlice';
 import { combineReducers, configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 //import { ActionTypes } from "@mui/base";
@@ -12,9 +12,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action
 >;
-
-
-
 
 const combinedReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
@@ -32,3 +29,7 @@ const store = configureStore({
 const makeStore = () => store;
 
 export const wrapper = makeStore;
+
+export interface ReduxState {
+  [registrationSlice.name]: RegistrationState
+}
