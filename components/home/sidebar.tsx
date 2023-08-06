@@ -16,7 +16,7 @@ import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 
 
-const drawerWidth = 240;
+const drawerWidth = 274;
 
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }];
 
@@ -49,11 +49,11 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             <ListItem key={title} disablePadding >
               <ListItemButton>
                 <ListItemAvatar>
-                  <Avatar style={{backgroundColor:index + 1 == step?'#BEE2FD':undefined, color: index + 1 == step?'#022959':undefined}}>
+                  <Avatar style={{backgroundColor:index + 1 == step?'#BEE2FD':'#483EFF', color: index + 1 == step?'#022959':undefined, border: '1px solid lightgray'}}>
                     {index+1}
                   </Avatar>
                 </ListItemAvatar>
-                <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{color: 'white'}}>
+                <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{color: 'white'}} primaryTypographyProps={{color:'#ABBCFF'}}>
                   {title}
                 </ListItemText>
               </ListItemButton>
