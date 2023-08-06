@@ -1,5 +1,3 @@
-import {HYDRATE} from "next-redux-wrapper";
-
 import { createSlice } from "@reduxjs/toolkit";
 import { AppState } from "./store";
 
@@ -36,6 +34,6 @@ export const registrationSlice = createSlice({
 
 export const { goNext } = registrationSlice.actions;
 
-export const selectAuthState = (state: AppState) => state.auth.authState;
+export const registerState = (state: AppState) => state.auth.authState;
 
 export default registrationSlice.reducer;
