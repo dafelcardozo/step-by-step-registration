@@ -37,7 +37,7 @@ function ProButton() {
 }
 
 export default function SelectYourPlan() {
-    const { plan, is_yearly: is_monthly } = useSelector((state: ReduxState) => state.planInfo);
+    const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const dispatch = useDispatch();
     return (<Box>
         <FormControl>
@@ -52,7 +52,7 @@ export default function SelectYourPlan() {
                 <ToggleButton value="advanced"><AdvancedButton /></ToggleButton>
                 <ToggleButton value="pro"><ProButton /></ToggleButton>
             </ToggleButtonGroup>
-            <FormControlLabel control={<Switch value={is_monthly} onChange={(e, checked) => dispatch(planSelectionSlice.actions.setIsYearly(checked))}/>} label="Yearly" />
+            <FormControlLabel control={<Switch value={is_yearly} onChange={(e, checked) => dispatch(planSelectionSlice.actions.setIsYearly(checked))}/>} label="Yearly" />
         </FormControl>
         </Box>);
 }
