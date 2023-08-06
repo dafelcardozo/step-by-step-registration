@@ -2,44 +2,42 @@
 "use client";
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import { FormControl, TextField, FormLabel } from '@mui/material';
 
 export default function PersonalInfoForm() {
     const [name, setName] = React.useState('');
     return (
-        <>
-            <div>Personal Info</div>
-            <div>Please provide your name, email address, and phone number.</div>
-            <Box
-                component="form"
-                sx={{
-                    '& .MuiTextField-root': { m: 1, width: '25ch' },
-                }}
-                noValidate
-                autoComplete="off"
-            >
-                <div>
-                    <TextField
-                        label="Name"
-                        value={name}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setName(event.target.value);
-                        }}
-                        placeholder='e.g. Stephen King'
-                    />
-                    <TextField
-                        label="Email address"
-                        placeholder='e.g. stephenking@lorem.com'
-                    />
-                    <TextField
-                        label="Phone Number"
-                        placeholder="e.g +1 234 567 890"                        
-                    >
-                    </TextField>
-                </div>
-
-            </Box>
-        </>
+        <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <FormControl>
+                <h1>Personal Info</h1>
+                <div>Please provide your name, email address, and phone number.</div>
+                <FormLabel>Name</FormLabel>
+                <TextField
+                    value={name}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                        setName(event.target.value);
+                    }}
+                    variant='outlined'
+                    placeholder='e.g. Stephen King'
+                />
+                <FormLabel>Email address</FormLabel>
+                <TextField
+                    placeholder='e.g. stephenking@lorem.com'
+                />
+                <FormLabel>Phone Number</FormLabel>
+                <TextField
+                    placeholder="e.g +1 234 567 890"
+                >
+                </TextField>
+            </FormControl>
+        </Box>
     );
 }
 
