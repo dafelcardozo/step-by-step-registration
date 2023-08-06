@@ -17,6 +17,7 @@ import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
 import BlueMountain from '../shared/icons/blue-mountain';
 import OrangeSun from '../shared/icons/orange-sun';
+import WhiteBirds from '../shared/icons/birds';
 
 const drawerWidth = 274;
 
@@ -65,6 +66,7 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             <BlueMountain />
             <OrangeMountain />
             <OrangeSun />
+            <WhiteBirds />
       </Drawer>
       <Box
         component="main"
