@@ -1,6 +1,6 @@
 import { Button, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { registrationSlice } from '@/components/shared/registrationSlice';
+import { goNext, goPrevious } from '@/components/shared/registrationSlice';
 import { ReduxState } from '@/components/shared/store';
 import PersonalInfoForm from './personal-info-form';
 import SelectYourPlan from './select-plan';
@@ -22,10 +22,9 @@ export default function NavigationButtons() {
             display="flex"
             justifyContent="space-between"
             alignItems="center">
-            <div><Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
+            <div><Button variant="contained" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
             <div>
-                <Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>Next Step</Button>
-                <Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goNext(''))} sx={{ display: step == 4 && !hasNext ? undefined : 'none' }}>Confirm</Button>
+                <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4?'Confirm':'Next Step'}</Button>
             </div>
         </Box>
     </div>);
