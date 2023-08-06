@@ -2,15 +2,17 @@ import { Button, Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { registrationSlice } from '@/components/shared/registrationSlice';
 import { ReduxState } from '@/components/shared/store';
-import { PropsWithChildren } from 'react';
+import PersonalInfoForm from './personal-info-form';
+import SelectYourPlan from './select-plan';
+import PickAddOns from './pick-add-ons';
 
-export default function ContentSlide({ children }: PropsWithChildren) {
-    const { hasPrevious, hasNext } = useSelector((state: ReduxState) => state.register);
+export default function NavigationButtons() {
+    const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.register);
     const dispatch = useDispatch();
     return (<div>
-        <div>
-            {children}
-        </div>
+        {step == 1 && <PersonalInfoForm />}
+        {step == 2 && <SelectYourPlan />}
+        {step == 3 && <PickAddOns />}
         <Box component="span"
             m={1}
             display="flex"

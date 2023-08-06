@@ -10,7 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { PropsWithChildren } from 'react';
-import ContentSlide, { ContentSlideProps } from './content-slide';
+import NavigationButtons from './nav-buttons';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
@@ -22,9 +22,8 @@ const drawerWidth = 274;
 
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }];
 
-export type SideBarProps = PropsWithChildren & ContentSlideProps;
 
-export default function SideBar({ children, ...props }: SideBarProps) {
+export default function SideBar({ children }: PropsWithChildren) {
   const { step } = useSelector((state: ReduxState) => state.register);
   return (
     <Box sx={{ display: 'flex' }} >
@@ -43,7 +42,6 @@ export default function SideBar({ children, ...props }: SideBarProps) {
         }}
         variant="permanent"
         anchor="left"
-
       >
         <Divider />
         <List>
@@ -71,10 +69,7 @@ export default function SideBar({ children, ...props }: SideBarProps) {
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
-        <ContentSlide {...props}>
-          {children}
-        </ContentSlide>
-
+        <NavigationButtons  />
       </Box>
     </Box>
   );
