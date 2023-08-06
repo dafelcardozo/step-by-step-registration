@@ -46,10 +46,10 @@ export default function SideBar({ children, ...props }: SideBarProps) {
         <Divider />
         <List>
           {steps.map(({ title }, index) => (
-            <ListItem key={title} disablePadding style={{ backgroundColor: (index + 1 == step) ? 'red' : '' }}>
+            <ListItem key={title} disablePadding >
               <ListItemButton>
                 <ListItemAvatar>
-                  <Avatar>
+                  <Avatar style={{backgroundColor:index + 1 == step?'#BEE2FD':undefined, color: index + 1 == step?'#022959':undefined}}>
                     {index+1}
                   </Avatar>
                 </ListItemAvatar>
