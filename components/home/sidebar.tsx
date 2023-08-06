@@ -23,7 +23,7 @@ const drawerWidth = 274;
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }];
 
 
-export default function SideBar({ children }: PropsWithChildren) {
+export default function SideBar() {
   const { step } = useSelector((state: ReduxState) => state.register);
   return (
     <Box sx={{ display: 'flex' }} >
