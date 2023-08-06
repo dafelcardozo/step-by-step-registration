@@ -46,7 +46,6 @@ export default function SideBar({ children, ...props }: SideBarProps) {
         anchor="left"
 
       >
-        <Toolbar />
         <Divider />
         <List>
           {steps.map(({ title }, index) => (
@@ -73,7 +72,6 @@ export default function SideBar({ children, ...props }: SideBarProps) {
         component="main"
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
-        <Toolbar />
         <ContentSlide {...props}>
           {children}
         </ContentSlide>

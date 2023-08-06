@@ -3,7 +3,6 @@ import { Analytics } from "@vercel/analytics/react";
 
 import Nav from "@/components/layout/nav";
 import { Suspense } from "react";
-import {theme} from './theme'
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -21,7 +20,6 @@ export const metadata = {
     creator: "@dafelcardozo",
   },
   metadataBase: new URL("https://precedent.dev"),
-  themeColor: "#FFF",
 };
 
 export default async function RootLayout({
