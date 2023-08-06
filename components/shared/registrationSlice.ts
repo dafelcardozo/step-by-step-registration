@@ -24,12 +24,12 @@ export const registrationSlice = createSlice({
     goNext(state, action) {
       state.step++;
       state.hasNext = state.step < state.nSteps;
-      state.hasPrevious = state.step > 1;
+      state.hasPrevious = state.step > 1 && state.step < 5;
     },
     goPrevious(state, action) {
       state.step--;
       state.hasNext = state.step < state.nSteps;
-      state.hasPrevious = state.step > 1;
+      state.hasPrevious = state.step > 1 && state.step < 5;
     }
   }
 });

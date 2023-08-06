@@ -23,7 +23,10 @@ export default function NavigationButtons() {
             justifyContent="space-between"
             alignItems="center">
             <div><Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
-            <div><Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goNext(''))} sx={{ display: hasNext ? undefined : 'none' }}>Next Step</Button></div>
+            <div>
+                <Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>Next Step</Button>
+                <Button variant="contained" onClick={() => dispatch(registrationSlice.actions.goNext(''))} sx={{ display: step == 4 && !hasNext ? undefined : 'none' }}>Confirm</Button>
+            </div>
         </Box>
     </div>);
 }
