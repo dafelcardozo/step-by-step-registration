@@ -6,7 +6,8 @@ import { AppState } from "./store";
 export interface RegistrationState {
   step: number;
   hasPrevious: boolean,
-  hasNext: boolean
+  hasNext: boolean,
+  nSteps: number
 }
 
 // Initial state
@@ -14,6 +15,7 @@ const initialState: RegistrationState = {
   step:1,
   hasPrevious: true,
   hasNext:true,
+  nSteps: 4
 };
 
 // Actual Slice
@@ -23,10 +25,14 @@ export const registrationSlice = createSlice({
   reducers: {
     // Actions to update the slider
     goNext(state, action) {
-      state.hasNext = action.payload;
+      state.step++;
+      state.hasNext = state.step <= state.nSteps;
+      state.hasPrevious = state.step > 1;
     },
     goPrevious(state, action) {
-      state.hasPrevious = action.payload
+      state.step--;
+      state.hasNext = state.step <= state.nSteps;
+      state.hasPrevious = state.step > 1;
     }
   },
 
@@ -43,6 +49,6 @@ export const registrationSlice = createSlice({
 
 export const { goNext } = registrationSlice.actions;
 
-//export const selectAuthState = (state: AppState) => state.auth.authState;
+export const selectAuthState = (state: AppState) => state.auth.authState;
 
 export default registrationSlice.reducer;

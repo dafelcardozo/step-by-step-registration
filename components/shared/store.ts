@@ -1,6 +1,5 @@
 import { authSlice } from "./authSlice";
 import { registrationSlice } from './registrationSlice';
-import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers, configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 //import { ActionTypes } from "@mui/base";
@@ -32,4 +31,4 @@ const store = configureStore({
 
 const makeStore = () => store;
 
-export const wrapper = createWrapper(makeStore);
+export const wrapper = makeStore;
