@@ -49,10 +49,9 @@ export default function SideBar({ children, ...props }: SideBarProps) {
           {steps.map(({ title }, index) => (
             <ListItem key={title} disablePadding style={{ backgroundColor: (index + 1 == step) ? 'red' : '' }}>
               <ListItemButton>
-                {index + 1}
                 <ListItemAvatar>
                   <Avatar>
-                    <ImageIcon />
+                    {index+1}
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{color: 'white'}}>
