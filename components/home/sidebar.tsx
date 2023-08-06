@@ -1,11 +1,9 @@
-import AppBar from '@mui/material/AppBar';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -13,10 +11,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
-import {PropsWithChildren} from 'react';
-import ContentSlide, { ContentSlideProps} from './content-slide';
-import { useSelector} from 'react-redux';
-import {ReduxState} from '@/components/shared/store';
+import { PropsWithChildren } from 'react';
+import ContentSlide, { ContentSlideProps } from './content-slide';
+import { useSelector } from 'react-redux';
+import { ReduxState } from '@/components/shared/store';
 
 
 const drawerWidth = 240;
@@ -25,21 +23,11 @@ const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-o
 
 export type SideBarProps = PropsWithChildren & ContentSlideProps;
 
-export default function SideBar({children, ...props}:SideBarProps ) {
-  const {step } = useSelector((state:ReduxState) => state.register);
+export default function SideBar({ children, ...props }: SideBarProps) {
+  const { step } = useSelector((state: ReduxState) => state.register);
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Permanent drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
@@ -47,26 +35,29 @@ export default function SideBar({children, ...props}:SideBarProps ) {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: '#483EFF',
+            color: 'white'
           },
         }}
         variant="permanent"
         anchor="left"
+
       >
         <Toolbar />
         <Divider />
         <List>
-          {steps.map(({title}, index) => (
-            <ListItem key={title} disablePadding style={{backgroundColor:(index+1 == step)?'red':''}}>
+          {steps.map(({ title }, index) => (
+            <ListItem key={title} disablePadding style={{ backgroundColor: (index + 1 == step) ? 'red' : '' }}>
               <ListItemButton>
-                {index+1}
+                {index + 1}
                 <ListItemAvatar>
-          <Avatar>
-            <ImageIcon />
-          </Avatar>
-        </ListItemAvatar>
-                <ListItemText primary={`STEP ${index+1}`} secondary={title} >
+                  <Avatar>
+                    <ImageIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{color: 'white'}}>
                   {title}
-                  </ListItemText>
+                </ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
@@ -79,9 +70,9 @@ export default function SideBar({children, ...props}:SideBarProps ) {
       >
         <Toolbar />
         <ContentSlide {...props}>
-        {children}
+          {children}
         </ContentSlide>
-        
+
       </Box>
     </Box>
   );
