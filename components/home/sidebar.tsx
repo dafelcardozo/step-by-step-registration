@@ -39,6 +39,7 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             boxSizing: 'border-box',
             backgroundColor: '#483EFF',
             color: 'white',
+            border: 0
           },
         }}
         variant="permanent"

@@ -1,8 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 
-.sidebar {
-    background-color: #483EFF;
+
+
+h1 {
+    color: '#022959';
 }
