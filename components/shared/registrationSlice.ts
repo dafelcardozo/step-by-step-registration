@@ -32,8 +32,8 @@ export const registrationSlice = createSlice({
   }
 });
 
-export const { goNext } = registrationSlice.actions;
+export const { goNext, goPrevious } = registrationSlice.actions;
 
-export const registerState = (state: AppState) => state.auth.authState;
+export const registerState = (state: AppState) => state.register;
 
 export default registrationSlice.reducer;

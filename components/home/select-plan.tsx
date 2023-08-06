@@ -4,7 +4,10 @@ import { FormControl, ToggleButtonGroup, ToggleButton, Switch, FormControlLabel,
 import ArcadeIcon from '../shared/icons/arcade-icon';
 import AdvancedIcon from '../shared/icons/advanced';
 import ProIcon from '../shared/icons/pro-icon';
-
+import { planSelectionSlice } from '../shared/planSlice';
+import { ReduxState } from '../shared/store';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function ArcadeButton() {
     return (<Box>
@@ -34,7 +37,8 @@ function ProButton() {
 }
 
 export default function SelectYourPlan() {
-    const [plan, setPlan] = React.useState('');
+    const { plan, is_monthly } = useSelector((state: ReduxState) => state.planInfo);
+    const dispatch = useDispatch();
     return (<Box>
         <FormControl>
             <Typography variant="h1">Select your plan</Typography>
@@ -42,13 +46,13 @@ export default function SelectYourPlan() {
             <ToggleButtonGroup color="primary"
                 value={plan}
                 exclusive
-                onChange={(e, selection) => setPlan(selection)}
+                onChange={(e, selection) => dispatch(planSelectionSlice.actions.setPlan(selection))}
                 aria-label="Platform">
                 <ToggleButton value="arcade"><ArcadeButton /></ToggleButton>
                 <ToggleButton value="advanced"><AdvancedButton /></ToggleButton>
                 <ToggleButton value="pro"><ProButton /></ToggleButton>
             </ToggleButtonGroup>
-            <FormControlLabel control={<Switch defaultChecked />} label="Yearly" />
+            <FormControlLabel control={<Switch defaultChecked value={is_monthly} onChange={(e, checked) => dispatch(planSelectionSlice.actions.setIsMonthly(checked))}/>} label="Yearly" />
         </FormControl>
         </Box>);
 }

@@ -19,7 +19,7 @@ export const metadata = {
       "Felipe Cardozo is a colombian web developer",
     creator: "@dafelcardozo",
   },
-  metadataBase: new URL("https://precedent.dev"),
+  metadataBase: new URL("https://david-felipe-cardozo.com"),
 };
 
 export default async function RootLayout({
