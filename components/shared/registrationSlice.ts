@@ -26,12 +26,12 @@ export const registrationSlice = createSlice({
     // Actions to update the slider
     goNext(state, action) {
       state.step++;
-      state.hasNext = state.step <= state.nSteps;
+      state.hasNext = state.step < state.nSteps;
       state.hasPrevious = state.step > 1;
     },
     goPrevious(state, action) {
       state.step--;
-      state.hasNext = state.step <= state.nSteps;
+      state.hasNext = state.step < state.nSteps;
       state.hasPrevious = state.step > 1;
     }
   },
