@@ -10,7 +10,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import ImageIcon from '@mui/icons-material/Image';
 import { PropsWithChildren } from 'react';
 import ContentSlide, { ContentSlideProps } from './content-slide';
 import { useSelector } from 'react-redux';
