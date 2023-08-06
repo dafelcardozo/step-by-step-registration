@@ -15,6 +15,8 @@ import ContentSlide, { ContentSlideProps } from './content-slide';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
+import BlueMountain from '../shared/icons/blue-mountain';
+import OrangeSun from '../shared/icons/orange-sun';
 
 const drawerWidth = 274;
 
@@ -60,7 +62,9 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             </ListItem>
           ))}
         </List>
+            <BlueMountain />
             <OrangeMountain />
+            <OrangeSun />
       </Drawer>
       <Box
         component="main"
