@@ -14,14 +14,16 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import {PropsWithChildren} from 'react';
-import ContentSlide from './content-slide';
+import ContentSlide, { ContentSlideProps} from './content-slide';
 
 
 const drawerWidth = 240;
 
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }];
 
-export default function SideBar({children}:PropsWithChildren ) {
+export type SideBarProps = PropsWithChildren & ContentSlideProps;
+
+export default function SideBar({children, ...props}:SideBarProps ) {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -73,7 +75,7 @@ export default function SideBar({children}:PropsWithChildren ) {
         sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
       >
         <Toolbar />
-        <ContentSlide hasPrevious={true} hasNext={true} onBackClicked={() => {console.info('a')}} onNextClicked={() => {console.info('a')}}>
+        <ContentSlide {...props}>
         {children}
         </ContentSlide>
         

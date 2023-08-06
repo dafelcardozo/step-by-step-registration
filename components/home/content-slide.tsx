@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { useDispatch} from 'react-redux';
 
 export type ContentSlideProps = {
     hasPrevious: boolean,
@@ -9,11 +10,13 @@ export type ContentSlideProps = {
 }
 
 export default function ContentSlide({hasPrevious, hasNext, onBackClicked, onNextClicked, children}:ContentSlideProps) {
+    //const dispatch = useDispatch();
+
     return (<div>
         <div>
             {children}
         </div>
-        {hasPrevious && <Button variant="contained" onClick={onBackClicked}>Go back</Button>}
-        {hasNext && <Button variant="contained" onClick={onNextClicked}>Next Step</Button>}
+        { <Button variant="contained" onClick={onBackClicked}>Go back</Button>}
+        { <Button variant="contained" onClick={onNextClicked}>Next Step</Button>}
     </div>);
 }
