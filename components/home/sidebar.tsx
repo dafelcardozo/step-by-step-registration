@@ -9,7 +9,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { PropsWithChildren } from 'react';
 import NavigationButtons from './nav-buttons';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
@@ -20,7 +19,7 @@ import WhiteBirds from '../shared/icons/birds';
 
 const drawerWidth = 274;
 
-const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }];
+const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }, { title: "Thank you!"}];
 
 
 export default function SideBar() {
@@ -45,7 +44,7 @@ export default function SideBar() {
       >
         <Divider />
         <List>
-          {steps.map(({ title }, index) => (
+          {steps.filter((s, index) => index < 4).map(({ title }, index) => (
             <ListItem key={title} disablePadding >
               <ListItemButton>
                 <ListItemAvatar>
