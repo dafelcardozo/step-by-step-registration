@@ -24,7 +24,7 @@ export const planSelectionSlice = createSlice({
   }
 });
 
-export const { setPlan, setIsYearly: setIsMonthly } = planSelectionSlice.actions;
+export const { setPlan, setIsYearly } = planSelectionSlice.actions;
 
 export const planState = (state: AppState) => state.planInfo;
 

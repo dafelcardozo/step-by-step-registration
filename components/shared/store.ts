@@ -2,6 +2,7 @@ import { authSlice } from "./authSlice";
 import { registrationSlice, RegistrationState } from './registrationSlice';
 import {personalInfoSlice, PersonalInfoState} from './personalInfoSlice';
 import { planSelectionSlice, PlanSelectionState } from "./planSlice";
+import { addOnsSlice, AddOnsState } from "./addOnsSlice";
 import { combineReducers, configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 //import { ActionTypes } from "@mui/base";
@@ -19,7 +20,8 @@ const combinedReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
   [registrationSlice.name]: registrationSlice.reducer,
   [personalInfoSlice.name]: personalInfoSlice.reducer,
-  [planSelectionSlice.name]: planSelectionSlice.reducer
+  [planSelectionSlice.name]: planSelectionSlice.reducer,
+  [addOnsSlice.name]: addOnsSlice.reducer
 });
 
 const reducer = (state:any, action:any) => {
@@ -37,5 +39,6 @@ export const wrapper = makeStore;
 export interface ReduxState {
   [registrationSlice.name]: RegistrationState,
   [personalInfoSlice.name]: PersonalInfoState,
-  [planSelectionSlice.name]: PlanSelectionState
+  [planSelectionSlice.name]: PlanSelectionState,
+  [addOnsSlice.name]: AddOnsState
 }
