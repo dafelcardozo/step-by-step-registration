@@ -1,5 +1,6 @@
 import { authSlice } from "./authSlice";
 import { registrationSlice, RegistrationState } from './registrationSlice';
+import {personalInfoSlice, PersonalInfoState} from './personalInfoSlice'
 import { combineReducers, configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 //import { ActionTypes } from "@mui/base";
@@ -15,7 +16,8 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 
 const combinedReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
-  [registrationSlice.name]: registrationSlice.reducer
+  [registrationSlice.name]: registrationSlice.reducer,
+  [personalInfoSlice.name]: personalInfoSlice.reducer
 });
 
 const reducer = (state:any, action:any) => {
@@ -31,5 +33,6 @@ const makeStore = () => store;
 export const wrapper = makeStore;
 
 export interface ReduxState {
-  [registrationSlice.name]: RegistrationState
+  [registrationSlice.name]: RegistrationState,
+  [personalInfoSlice.name]: PersonalInfoState
 }
