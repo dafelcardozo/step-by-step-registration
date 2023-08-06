@@ -14,7 +14,7 @@ import { PropsWithChildren } from 'react';
 import ContentSlide, { ContentSlideProps } from './content-slide';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
-
+import OrangeMountain from '../shared/icons/orange-mountain';
 
 const drawerWidth = 274;
 
@@ -35,7 +35,7 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             width: drawerWidth,
             boxSizing: 'border-box',
             backgroundColor: '#483EFF',
-            color: 'white'
+            color: 'white',
           },
         }}
         variant="permanent"
@@ -60,7 +60,7 @@ export default function SideBar({ children, ...props }: SideBarProps) {
             </ListItem>
           ))}
         </List>
-
+            <OrangeMountain />
       </Drawer>
       <Box
         component="main"
