@@ -6,28 +6,30 @@ import { ReduxState } from "../shared/store";
 
 type AddOnCardProps = {
     title: string,
-    price: string,
+    monthlyPrice: number,
     description: string
 }
 
-function AddOnCard({ title, price, description }: AddOnCardProps) {
+function AddOnCard({ title, monthlyPrice, description }: AddOnCardProps) {
+    const { is_yearly } = useSelector((state: ReduxState) => state.planInfo);
+    const period = is_yearly ? 'yr' : 'mo';
     return (<>
         <div>{title}</div>
-        <Typography align="right">{price}</Typography>
+        <Typography align="right">{is_yearly?monthlyPrice*10:monthlyPrice}/{period}</Typography>
         <div>{description}</div>
     </>);
 }
 
 function OnlineServiceLabel() {
-    return <AddOnCard title="Online service" price="+$1/mo" description="Access to multiplayer games" />
+    return <AddOnCard title="Online service" monthlyPrice={1} description="Access to multiplayer games" />
 }
 
 function LargerStorageLabel() {
-    return <AddOnCard title="Larger storage" price="+$2/mo" description="Extra 1TB of cloud save" />
+    return <AddOnCard title="Larger storage" monthlyPrice={2} description="Extra 1TB of cloud save" />
 }
 
 function CustomizableProfile() {
-    return <AddOnCard title="Customizable Profile" price="+2/mo" description="Custom theme on your profile"/>
+    return <AddOnCard title="Customizable Profile" monthlyPrice={2} description="Custom theme on your profile"/>
 }
 
 function labelStyles(isChecked: boolean) {

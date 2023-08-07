@@ -14,9 +14,7 @@ export const theme = createTheme({
         fontWeight: 'bolder'
     },
     subtitle1: {
-       fontWeight: '900',
-       fontSize: '5rem',
-       color: 'gold'
+      color:'#9699AA'
     }
   }
 });
