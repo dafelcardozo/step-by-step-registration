@@ -12,19 +12,18 @@ import { useMediaQuery, useTheme } from "@mui/material";
 export function ButtonsBar() {
     const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.register);
     const dispatch = useDispatch();
-    const theme = useTheme();
-    const isExtraSmallSize =  useMediaQuery(theme.breakpoints.down("md"));
+    // const theme = useTheme();
+    // const isExtraSmallSize =  useMediaQuery(theme.breakpoints.down("md"));
     return (<Box
         m={1}
         display="flex"
         flexDirection='row'
         justifyContent="end"
         alignItems="flex-end">
-            <Box display='flex' justifyContent='space-between' alignItems='center'>
+        <Box display='flex' justifyContent='space-between' alignItems='center'>
             <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button>
             <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
-
-            </Box>
+        </Box>
     </Box>)
 }
 
