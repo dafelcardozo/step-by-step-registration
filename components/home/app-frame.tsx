@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, Paper, styled, Grid } from '@mui/material';
+import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid } from '@mui/material';
 import StepsCard, { ButtonsBar } from './steps-content-forms';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
