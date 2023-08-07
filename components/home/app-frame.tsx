@@ -24,12 +24,12 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 
 
-export default function SideBar() {
+export default function AppFrame() {
   const { step } = useSelector((state: ReduxState) => state.nav);
   const theme = useTheme();
   const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
 
-  const StepsHorizontalStack = (<Grid
+  const TopStepsList = (<Grid
     container
     spacing={0}
     direction="column"
@@ -52,7 +52,7 @@ export default function SideBar() {
 
   </Grid>);
 
-  const appDrawer = (<Drawer
+  const Sidebar = (<Drawer
     sx={{
       width: drawerWidth,
       flexShrink: 0,
@@ -93,9 +93,9 @@ export default function SideBar() {
 
   return (
     <>
-      {isExtraSmallSize && StepsHorizontalStack}
+      {isExtraSmallSize && TopStepsList}
       <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-150px' : undefined }} >
-        {appDrawer}
+        {Sidebar}
         <Box
           sx={{ flexGrow: 1, p: 3 }}
         >
