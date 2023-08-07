@@ -10,6 +10,8 @@ import WhiteBirds from '../shared/icons/birds';
 import { useMediaQuery, useTheme } from "@mui/material";
 import Birds2 from '../shared/icons/birds2';
 import Circle from '../shared/icons/circle';
+import PinkBlob from '../shared/icons/pink-blob';
+import BlueCurve from '../shared/icons/blue-curve';
 
 const drawerWidth = 274;
 
@@ -34,6 +36,10 @@ export default function SideBar() {
     alignItems="center"
     justifyContent="start"
     sx={{ bgcolor: '#483EFF' }} minHeight='200px'>
+    <BlueCurve />
+    <Circle />
+    <Birds2 />
+    <PinkBlob />
     <Stack direction='row' spacing={2} >
       {steps.filter((s, index) => index < 4).map(({ title }, index) => (
         <Item key={title}  >
@@ -43,8 +49,7 @@ export default function SideBar() {
         </Item>
       ))}
     </Stack>
-    <Circle />
-    <Birds2 />
+
   </Grid>);
 
   const appDrawer = (<Drawer
