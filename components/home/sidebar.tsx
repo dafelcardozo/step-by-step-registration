@@ -3,13 +3,12 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import NavigationButtons from './nav-buttons';
+import StepsContent, { ButtonsBar} from './nav-buttons';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
@@ -27,6 +26,7 @@ export default function SideBar() {
   const theme = useTheme();
   const isExtraSmallSize =  useMediaQuery(theme.breakpoints.down("md"));
   return (
+    <>
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
       <Drawer
@@ -44,7 +44,6 @@ export default function SideBar() {
         variant={isExtraSmallSize?'temporary':'permanent'}
         anchor="left"
       >
-        <Divider />
         <List>
           {steps.filter((s, index) => index < 4).map(({ title }, index) => (
             <ListItem key={title} disablePadding >
@@ -72,8 +71,10 @@ export default function SideBar() {
         component="main"
         sx={{ flexGrow: 1,  p: 3 }}
       >
-        <NavigationButtons  />
+        <StepsContent  />
       </Box>
     </Box>
+    <ButtonsBar />
+    </>
   );
 }

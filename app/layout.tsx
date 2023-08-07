@@ -33,7 +33,7 @@ export default async function RootLayout({
       <meta name="viewport" content="initial-scale=1, width=device-width" />
       
       </head>
-      <body style={{backgroundColor:'#BEE2FD'}}>
+      <body style={{backgroundColor:'#EFF5FF'}}>
         <div/>
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
