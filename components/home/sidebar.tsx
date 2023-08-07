@@ -14,11 +14,9 @@ const drawerWidth = 274;
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }, { title: "Thank you!" }];
 
 const Item = styled(Box)(({ theme }) => ({
- // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
   textAlign: 'center',
-  //color: theme.palette.text.secondary,
 }));
 
 
@@ -83,7 +81,7 @@ export default function SideBar() {
   return (
     <div>
       {isExtraSmallSize && topStepsList}
-      <Box sx={{ display: 'flex', position:'relative', top:'-150px' }} >
+      <Box sx={{ display: 'flex', position:isExtraSmallSize?'relative':undefined, top:isExtraSmallSize?'-150px':undefined }} >
         {appDrawer}
         <Box
           component="main"
