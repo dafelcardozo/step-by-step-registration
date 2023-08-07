@@ -37,7 +37,7 @@ export default function StepsCard() {
     const { step } = useSelector((state: ReduxState) => state.nav);
     const theme = useTheme();
     const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
-    return (<Card>
+    return (<Card sx={{minHeight:'402px'}}>
         {step == 1 && <PersonalInfoForm />}
         {step == 2 && <SelectYourPlan />}
         {step == 3 && <PickAddOns />}
