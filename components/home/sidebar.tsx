@@ -16,14 +16,16 @@ import OrangeMountain from '../shared/icons/orange-mountain';
 import BlueMountain from '../shared/icons/blue-mountain';
 import OrangeSun from '../shared/icons/orange-sun';
 import WhiteBirds from '../shared/icons/birds';
+import { useMediaQuery, useTheme } from "@mui/material";
 
 const drawerWidth = 274;
 
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }, { title: "Thank you!"}];
 
-
 export default function SideBar() {
   const { step } = useSelector((state: ReduxState) => state.register);
+  const theme = useTheme();
+  const isExtraSmallSize =  useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
@@ -39,7 +41,7 @@ export default function SideBar() {
             border: 0
           },
         }}
-        variant="permanent"
+        variant={isExtraSmallSize?'temporary':'permanent'}
         anchor="left"
       >
         <Divider />
@@ -52,9 +54,11 @@ export default function SideBar() {
                     {index+1}
                   </Avatar>
                 </ListItemAvatar>
+                {!isExtraSmallSize &&
                 <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{color: 'white'}} primaryTypographyProps={{color:'#ABBCFF'}}>
                   {title}
                 </ListItemText>
+                }
               </ListItemButton>
             </ListItem>
           ))}
@@ -66,7 +70,7 @@ export default function SideBar() {
       </Drawer>
       <Box
         component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+        sx={{ flexGrow: 1,  p: 3 }}
       >
         <NavigationButtons  />
       </Box>

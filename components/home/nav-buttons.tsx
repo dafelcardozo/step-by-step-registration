@@ -1,4 +1,4 @@
-import { Button, Box } from '@mui/material';
+import { Button, Box, Card } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { goNext, goPrevious } from '@/components/shared/registrationSlice';
 import { ReduxState } from '@/components/shared/store';
@@ -8,10 +8,11 @@ import PickAddOns from './pick-add-ons';
 import Summary from './summary';
 import ThankYou from './thank-you';
 
+
 export default function NavigationButtons() {
     const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.register);
     const dispatch = useDispatch();
-    return (<div>
+    return (<Card>
         {step == 1 && <PersonalInfoForm />}
         {step == 2 && <SelectYourPlan />}
         {step == 3 && <PickAddOns />}
@@ -27,5 +28,5 @@ export default function NavigationButtons() {
                 <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4?'Confirm':'Next Step'}</Button>
             </div>
         </Box>
-    </div>);
+    </Card>);
 }
