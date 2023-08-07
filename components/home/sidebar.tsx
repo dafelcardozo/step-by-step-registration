@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, Paper, styled  } from '@mui/material';
+import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, Paper, styled, Grid } from '@mui/material';
 import StepsCard, { ButtonsBar } from './steps-content-forms';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
@@ -27,9 +27,13 @@ export default function SideBar() {
   const theme = useTheme();
   const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
 
-  const topStepsList = (<Box  display="flex"
-  justifyContent="center" 
-  alignItems="start" sx={{bgcolor:'#483EFF'}} minHeight='200px'>
+  const StepsHorizontalStack = (<Grid
+    container
+    spacing={0}
+    direction="column"
+    alignItems="center"
+    justifyContent="start"
+    sx={{ bgcolor: '#483EFF' }} minHeight='200px'>
     <Stack direction='row' spacing={2} >
       {steps.filter((s, index) => index < 4).map(({ title }, index) => (
         <Item key={title}  >
@@ -41,7 +45,7 @@ export default function SideBar() {
     </Stack>
     <Circle />
     <Birds2 />
-  </Box>);
+  </Grid>);
 
   const appDrawer = (<Drawer
     sx={{
@@ -84,11 +88,11 @@ export default function SideBar() {
 
   return (
     <>
-      {isExtraSmallSize && topStepsList}
-      <Box sx={{ display: 'flex', position:isExtraSmallSize?'relative':undefined, top:isExtraSmallSize?'-150px':undefined }} >
+      {isExtraSmallSize && StepsHorizontalStack}
+      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-150px' : undefined }} >
         {appDrawer}
         <Box
-          sx={{ flexGrow: 1, p: 3}}
+          sx={{ flexGrow: 1, p: 3 }}
         >
           <StepsCard />
         </Box>
