@@ -13,7 +13,7 @@ export default function Summary() {
     const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const { customizableProfile, largerStorage, onlineService } = useSelector((state: ReduxState) => state.addOns);
     const pricing = is_yearly ? yearlyPlanPricing : monthlyPlanPricing;
-    const p_desc = is_yearly ? 'yr' : 'mo';
+    const period = is_yearly ? 'yr' : 'mo';
 
     return (<Box>
         <Typography variant="h1">Finishing up</Typography>
@@ -25,21 +25,21 @@ export default function Summary() {
                 <Link onClick={() => dispatch(goToStep(2))}>Change</Link>
             </Grid>
             <Grid item xs={6}>
-                {pricing[plan]}/{p_desc}
+                {pricing[plan]}/{period}
             </Grid>
             {onlineService &&
                 <>
                     <Grid item xs={6} >
                         Online service
                     </Grid>
-                    <Grid item xs={6} >+$1/{p_desc}</Grid>
+                    <Grid item xs={6} >+$1/{period}</Grid>
                 </>
             }
             {largerStorage && <>
                 <Grid item xs={6}  >
                     Larger storage
                 </Grid>
-                <Grid item xs={6}>+$2/{p_desc}</Grid>
+                <Grid item xs={6}>+$2/{period}</Grid>
             </>
             }
             {customizableProfile &&
@@ -47,7 +47,7 @@ export default function Summary() {
                     <Grid item xs={6}  >
                         Customizable profile
                     </Grid>
-                    <Grid item xs={6}>+$2/{p_desc}</Grid>
+                    <Grid item xs={6}>+$2/{period}</Grid>
                 </>
             }
             <Grid item xs={6}  >

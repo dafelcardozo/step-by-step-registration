@@ -18,44 +18,28 @@ const StyledToggleButton = styled(ToggleButton)({
     }
 });
 
-function ArcadeButton() {
+const monthlyPlanPricing:{ [key: string]: number } = { 'arcade': 9, 'advanced': 12, 'pro': 15 };
+const yearlyPlanPricing:{ [key: string]: number } = { 'arcade': 90, 'advanced': 120, 'pro': 150 };
+
+interface PlanButtonProps {
+    plan:string,
+    icon: JSX.Element
+}
+
+function PlanButton({plan, icon}:PlanButtonProps) {
+    const { is_yearly } = useSelector((state: ReduxState) => state.planInfo);
+    const period = is_yearly ? 'yr' : 'mo';
+    const planPricing = is_yearly? yearlyPlanPricing:monthlyPlanPricing;
     return (<Grid container>
         <Grid item xs={3}>
-            <ArcadeIcon />
+            {icon}
         </Grid>
         <Grid>
-            <div>Arcade</div>
-            <div>$90/yr</div>
-            <div>2 months free</div>
+            <div>{plan}</div>
+            <div>${planPricing[plan]}/{period}</div>
+            {is_yearly && <div>2 months free</div>}
         </Grid>
     </Grid>);
-}
-
-function AdvancedButton() {
-    return (<Grid container>
-        <Grid item xs={3}>
-            <AdvancedIcon />
-        </Grid>
-        <Grid>
-            <div>Advanced</div>
-            <div>$120/yr</div>
-            <div>2 months free</div>
-        </Grid>
-    </Grid>)
-}
-
-function ProButton() {
-    return (<Grid container>
-        <Grid item xs={3}>
-        <ProIcon />
-        </Grid>
-        <Grid>
-            <div>Pro</div>
-            <div>$150/yr</div>
-            <div>2 months free</div>
-        </Grid>
-
-    </Grid>)
 }
 
 export default function SelectYourPlan() {
@@ -72,9 +56,9 @@ export default function SelectYourPlan() {
                 exclusive
                 onChange={(e, selection) => dispatch(setPlan(selection))}
                 aria-label="Platform" sx={{ '&.Mui-selected': { color: 'red' }, padding: '5px', '& .MuiToggleButtonGroup-grouped': { margin: '10px' } }}>
-                <StyledToggleButton value="arcade" ><ArcadeButton /></StyledToggleButton>
-                <StyledToggleButton value="advanced" ><AdvancedButton /></StyledToggleButton>
-                <StyledToggleButton value="pro" ><ProButton /></StyledToggleButton>
+                <StyledToggleButton value="arcade" ><PlanButton plan="arcade" icon={<ArcadeIcon />}/></StyledToggleButton>
+                <StyledToggleButton value="advanced" ><PlanButton plan="advanced" icon={<AdvancedIcon />}/></StyledToggleButton>
+                <StyledToggleButton value="pro" ><PlanButton plan="pro" icon={<ProIcon />} /></StyledToggleButton>
             </ToggleButtonGroup>
             <FormControlLabel sx={{ backgroundColor: '#F8F9FF' }} control={<Switch checked={is_yearly} onChange={(e, checked) => dispatch(setIsYearly(checked))} />} label="Yearly" />
         </FormControl>
