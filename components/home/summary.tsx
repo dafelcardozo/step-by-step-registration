@@ -12,6 +12,9 @@ type AddOnRowProps = {
     monthlyPrice: number
 }
 
+const servicePricing = (is_yearly:boolean, base_price:number) => is_yearly?base_price*10:base_price;
+
+
 function AddOnRow({ selected, description, monthlyPrice }: AddOnRowProps) {
     const { is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const period = is_yearly ? 'yr' : 'mo';
@@ -20,7 +23,7 @@ function AddOnRow({ selected, description, monthlyPrice }: AddOnRowProps) {
             <Grid item xs={6}  >
                 {description}
             </Grid>
-            <Grid item xs={6}>+${is_yearly ? monthlyPrice * 10 : monthlyPrice}/{period}</Grid>
+            <Grid item xs={6}>+${servicePricing(is_yearly, monthlyPrice)}/{period}</Grid>
         </>:<></>
     )
 }
@@ -32,6 +35,11 @@ export default function Summary() {
     const { customizableProfile, largerStorage, onlineService } = useSelector((state: ReduxState) => state.addOns);
     const pricing = is_yearly ? yearlyPlanPricing : monthlyPlanPricing;
     const period = is_yearly ? 'yr' : 'mo';
+    const planPricing = pricing[plan];
+    const onlineServicePricing = onlineService?servicePricing(is_yearly, 1):0;
+    const largerStoragePricing = largerStorage?servicePricing(is_yearly, 2):0;
+    const customizableProfilePricing = customizableProfile?servicePricing(is_yearly, 2):0;
+    const bigSum = planPricing+onlineServicePricing+largerStoragePricing+customizableProfilePricing;    
 
     return (<Box>
         <Typography variant="h1">Finishing up</Typography>
@@ -42,7 +50,7 @@ export default function Summary() {
                 <Link onClick={() => dispatch(goToStep(2))}>Change</Link>
             </Grid>
             <Grid item xs={6}>
-                {pricing[plan]}/{period}
+                {planPricing}/{period}
             </Grid>
             <AddOnRow selected={onlineService} description="Online service" monthlyPrice={1}/>
             <AddOnRow selected={largerStorage} description="Larger storage" monthlyPrice={2} />
@@ -50,7 +58,7 @@ export default function Summary() {
             <Grid item xs={6}>
                 Total (per {is_yearly ? 'month' : 'year'})
             </Grid>
-            <Grid item xs={6}>(Big total calculation)/{period}</Grid>
+            <Grid item xs={6}>+${bigSum}/{period}</Grid>
         </Grid>
     </Box>);
 }
