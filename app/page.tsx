@@ -7,6 +7,7 @@ import { wrapper } from "@/components/shared/store";
 import { Provider } from "react-redux";
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from './theme'
+import { CssBaseline } from '@mui/material';
 
 
 export default function MyApp() {
@@ -14,6 +15,7 @@ export default function MyApp() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <SideBar />
       </ThemeProvider>
     </Provider>

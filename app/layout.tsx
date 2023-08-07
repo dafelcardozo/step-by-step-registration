@@ -30,11 +30,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
-      
+      <meta name="viewport" content="initial-scale=1, width=device-width" />     
       </head>
       <body style={{backgroundColor:'#EFF5FF'}}>
-        <div/>
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
           <Nav />
