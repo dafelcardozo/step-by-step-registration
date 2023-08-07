@@ -74,7 +74,7 @@ export default function SideBar() {
         <StepsContent  />
       </Box>
     </Box>
-    <ButtonsBar />
+    {isExtraSmallSize && <ButtonsBar />}
     </>
   );
 }

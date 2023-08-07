@@ -33,6 +33,7 @@ export const authSlice = createSlice({
       };
     },
   },
+  
 });
 
 export const { setAuthState } = authSlice.actions;
