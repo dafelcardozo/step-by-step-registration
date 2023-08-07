@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, Paper, styled  } from '@mui/material';
-import StepsContent, { ButtonsBar } from './steps-content-forms';
+import StepsCard, { ButtonsBar } from './steps-content-forms';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
@@ -23,7 +23,7 @@ const Item = styled(Box)(({ theme }) => ({
 
 
 export default function SideBar() {
-  const { step } = useSelector((state: ReduxState) => state.register);
+  const { step } = useSelector((state: ReduxState) => state.nav);
   const theme = useTheme();
   const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -90,7 +90,7 @@ export default function SideBar() {
         <Box
           sx={{ flexGrow: 1, p: 3}}
         >
-          <StepsContent />
+          <StepsCard />
         </Box>
       </Box>
       {isExtraSmallSize && <ButtonsBar />}

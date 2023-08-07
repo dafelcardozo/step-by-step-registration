@@ -1,6 +1,6 @@
 import { Button, Box, Card } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { goNext, goPrevious } from '@/components/shared/registrationSlice';
+import { goNext, goPrevious, validateStep } from '@/components/shared/navigationSlice';
 import { ReduxState } from '@/components/shared/store';
 import PersonalInfoForm from './personal-info-form';
 import SelectYourPlan from './select-plan';
@@ -10,10 +10,12 @@ import ThankYou from './thank-you';
 import { useMediaQuery, useTheme } from "@mui/material";
 
 export function ButtonsBar() {
-    const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.register);
+    const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.nav);
     const dispatch = useDispatch();
-    // const theme = useTheme();
-    // const isExtraSmallSize =  useMediaQuery(theme.breakpoints.down("md"));
+
+    const nextClicked = () => {
+        dispatch(validateStep(''));
+    }
     return (<Box
         m={1}
         display="flex"
@@ -22,14 +24,14 @@ export function ButtonsBar() {
         alignItems="flex-end">
         <Box display='flex' justifyContent='space-between' alignItems='center'>
             <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button>
-            <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
+            <Button variant="contained" onClick={() => nextClicked()} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
         </Box>
     </Box>)
 }
 
 
-export default function StepsContent() {
-    const { step } = useSelector((state: ReduxState) => state.register);
+export default function StepsCard() {
+    const { step } = useSelector((state: ReduxState) => state.nav);
     const theme = useTheme();
     const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
     return (<Card>

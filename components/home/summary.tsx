@@ -1,7 +1,7 @@
 import { Box, Link, Grid, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxState } from "../shared/store";
-import { goToStep } from "../shared/registrationSlice";
+import { goToStep } from "../shared/navigationSlice";
 
 const monthlyPlanPricing: { [key: string]: number } = { 'arcade': 9, 'advanced': 12, 'pro': 15 };
 const yearlyPlanPricing: { [key: string]: number } = { 'arcade': 90, 'advanced': 120, 'pro': 150 };
