@@ -8,6 +8,8 @@ import BlueMountain from '../shared/icons/blue-mountain';
 import OrangeSun from '../shared/icons/orange-sun';
 import WhiteBirds from '../shared/icons/birds';
 import { useMediaQuery, useTheme } from "@mui/material";
+import Birds2 from '../shared/icons/birds2';
+import Circle from '../shared/icons/circle';
 
 const drawerWidth = 274;
 
@@ -37,6 +39,8 @@ export default function SideBar() {
         </Item>
       ))}
     </Stack>
+    <Circle />
+    <Birds2 />
   </Box>);
 
   const appDrawer = (<Drawer
