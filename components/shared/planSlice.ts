@@ -26,6 +26,6 @@ export const planSelectionSlice = createSlice({
 
 export const { setPlan, setIsYearly } = planSelectionSlice.actions;
 
-export const planState = (state: AppState) => state.planInfo;
+export const PState = (state: AppState) => state.planInfo;
 
 export default planSelectionSlice.reducer;

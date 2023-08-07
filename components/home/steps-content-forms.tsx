@@ -17,15 +17,14 @@ export function ButtonsBar() {
     return (<Box
         m={1}
         display="flex"
-        position={isExtraSmallSize?'absolute':undefined}
-        bottom={isExtraSmallSize?'10px':undefined}
-        justifyContent="space-between"
-        alignItems="center">
-        <div>
-            <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
-        <div>
+        flexDirection='row'
+        justifyContent="end"
+        alignItems="flex-end">
+            <Box display='flex' justifyContent='space-between' alignItems='center'>
+            <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button>
             <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
-        </div>
+
+            </Box>
     </Box>)
 }
 
