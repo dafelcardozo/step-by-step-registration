@@ -12,7 +12,6 @@ import { styled } from "@mui/material/styles";
 
 const StyledToggleButton = styled(ToggleButton)({
     "&.Mui-selected, &.Mui-selected:hover": {
-        color: "red",
         backgroundColor: '#F8F9FF',
         borderColor: '#483EFF',
         borderRadius: '8px'
