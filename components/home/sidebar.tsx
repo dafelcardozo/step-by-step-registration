@@ -79,18 +79,17 @@ export default function SideBar() {
   </Drawer>);
 
   return (
-    <div>
+    <>
       {isExtraSmallSize && topStepsList}
       <Box sx={{ display: 'flex', position:isExtraSmallSize?'relative':undefined, top:isExtraSmallSize?'-150px':undefined }} >
         {appDrawer}
         <Box
-          component="main"
           sx={{ flexGrow: 1, p: 3}}
         >
           <StepsContent />
         </Box>
       </Box>
       {isExtraSmallSize && <ButtonsBar />}
-    </div>
+    </>
   );
 }
