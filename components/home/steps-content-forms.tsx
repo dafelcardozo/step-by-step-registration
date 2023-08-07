@@ -14,7 +14,10 @@ export function ButtonsBar() {
     const dispatch = useDispatch();
 
     const nextClicked = () => {
-        dispatch(validateStep(''));
+        if ([1, 2].includes(step))
+            dispatch(validateStep(''));
+        else
+            dispatch(goNext(''))
     }
     return (<Box
         m={1}

@@ -56,7 +56,7 @@ export default function Summary() {
             <AddOnRow selected={largerStorage} description="Larger storage" monthlyPrice={2} />
             <AddOnRow selected={customizableProfile} description="Customizable profile" monthlyPrice={2}/>
             <Grid item xs={6}>
-                Total (per {is_yearly ? 'month' : 'year'})
+                Total (per {is_yearly ? 'year':'month'})
             </Grid>
             <Grid item xs={6}>+${bigSum}/{period}</Grid>
         </Grid>

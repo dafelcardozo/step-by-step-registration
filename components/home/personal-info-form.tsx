@@ -6,7 +6,7 @@ import { FormControl, TextField, FormLabel, Typography } from '@mui/material';
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setEmail, setPhone } from '../shared/personalInfoSlice';
-import { goToStep, resetValidation } from '../shared/navigationSlice';
+import { goNext, resetValidation } from '../shared/navigationSlice';
 
 export default function PersonalInfoForm() {
     const {step, is_valid_step} = useSelector((state: ReduxState) => state.nav);
@@ -31,7 +31,7 @@ export default function PersonalInfoForm() {
                 setPhoneError('This field is required');
                 return;
             }
-            dispatch(goToStep(2));
+            dispatch(goNext(''));
         }
 
     }, [step, is_valid_step])
