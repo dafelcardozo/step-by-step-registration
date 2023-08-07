@@ -22,7 +22,7 @@ export default function NavigationButtons() {
             display="flex"
             justifyContent="space-between"
             alignItems="center">
-            <div><Button variant="contained" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
+            <div><Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button></div>
             <div>
                 <Button variant="contained" onClick={() => dispatch(goNext(''))} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4?'Confirm':'Next Step'}</Button>
             </div>
