@@ -29,16 +29,19 @@ export default function PersonalInfoForm() {
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => dispatch(personalInfoSlice.actions.setName(event.target.value)) }
                     variant='outlined'
                     placeholder='e.g. Stephen King'
+                    size="small"
                 />
                 <FormLabel>Email address</FormLabel>
                 <TextField
                     value={email}
+                    size="small"
                     placeholder='e.g. stephenking@lorem.com'
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => dispatch(personalInfoSlice.actions.setEmail(event.target.value)) }
                 />
                 <FormLabel>Phone Number</FormLabel>
                 <TextField
                     value={phone}
+                    size="small"
                     placeholder="e.g +1 234 567 890"
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => dispatch(personalInfoSlice.actions.setPhone(event.target.value)) }
                 >

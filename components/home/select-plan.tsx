@@ -52,7 +52,7 @@ export default function SelectYourPlan() {
                 <ToggleButton value="advanced"><AdvancedButton /></ToggleButton>
                 <ToggleButton value="pro"><ProButton /></ToggleButton>
             </ToggleButtonGroup>
-            <FormControlLabel control={<Switch value={is_yearly} onChange={(e, checked) => dispatch(planSelectionSlice.actions.setIsYearly(checked))}/>} label="Yearly" />
+            <FormControlLabel control={<Switch checked={is_yearly} onChange={(e, checked) => dispatch(planSelectionSlice.actions.setIsYearly(checked))}/>} label="Yearly" />
         </FormControl>
         </Box>);
 }
