@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { FormControl, ToggleButtonGroup, ToggleButton, Switch, FormControlLabel, Typography } from '@mui/material';
+import { FormControl, ToggleButtonGroup, ToggleButton, Switch, FormControlLabel, Typography, useTheme, useMediaQuery } from '@mui/material';
 import ArcadeIcon from '../shared/icons/arcade-icon';
 import AdvancedIcon from '../shared/icons/advanced';
 import ProIcon from '../shared/icons/pro-icon';
@@ -39,11 +39,13 @@ function ProButton() {
 export default function SelectYourPlan() {
     const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const dispatch = useDispatch();
+    const theme = useTheme();
+    const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
     return (<Box>
         <FormControl>
             <Typography variant="h1">Select your plan</Typography>
             <div>You have the option of monthly or yearly billing.</div>
-            <ToggleButtonGroup color="primary" 
+            <ToggleButtonGroup color="primary" orientation={isExtraSmallSize?'vertical':undefined}
                 value={plan}
                 exclusive
                 onChange={(e, selection) => dispatch(setPlan(selection))}
