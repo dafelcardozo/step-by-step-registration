@@ -54,15 +54,14 @@ type CheckedProps = {
 
 function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
     return (
-    <Grid container alignItems="center" spacing={1} >
-        <Grid item className={!
-            checked?'is_checked':undefined}>
+    <Grid container alignItems="center" spacing={1} bgcolor={'#F8F9FF'}>
+        <Grid item className={!checked?'is_checked':undefined} onClick={() => onChange(!checked)}>
             Monthly
         </Grid>
         <Grid item>
             <Switch checked={checked} onChange={(e, checked) => onChange(checked)} />
         </Grid>
-        <Grid item className={checked?'is_checked':undefined}>
+        <Grid item className={checked?'is_checked':undefined} onClick={() => onChange(!checked)}>
             Yearly
         </Grid>
     </Grid>)
