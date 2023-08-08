@@ -38,7 +38,7 @@ export default function AppFrame() {
     <Circle />
     <Birds2 />
     <PinkBlob />
-    <Stack direction='row' spacing={2} >
+    <Stack direction='row' spacing={2} sx={{paddingTop:'50px'}}>
       {steps.filter((s, index) => index < 4).map(({ title }, index) => (
         <Item key={title}  >
           <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : 'unset', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>

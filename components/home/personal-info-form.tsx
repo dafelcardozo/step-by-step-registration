@@ -1,7 +1,6 @@
 "use client";
 import {ChangeEvent, useEffect, useState} from 'react';
-import Box from '@mui/material/Box';
-import { FormControl, TextField, FormLabel, Typography } from '@mui/material';
+import { FormControl, TextField, FormLabel, Typography, Box } from '@mui/material';
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setEmail, setPhone } from '../shared/personalInfoSlice';

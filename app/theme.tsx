@@ -1,13 +1,20 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { pink, blueGrey,  } from '@mui/material/colors';
+import { pink, blueGrey } from '@mui/material/colors';
 
 export const theme = createTheme({
   components: {
     MuiFormLabel: {
       defaultProps: {
         color:'primary'
-      }
+      },
+      styleOverrides: {
+        root: {
+          color: '#022959',
+          fontWeight: '400',
+          fontSize: '12px'
+        },
+      },
     },
     MuiCard: {
       styleOverrides: {
@@ -31,7 +38,9 @@ export const theme = createTheme({
     subtitle1: {
       color:'#9699AA',
       fontWeight:'400',
-      fontSize: '16px'
+      fontSize: '16px',
+      paddingTop:'15px',
+      paddingBottom:'15px'
     }
   }
 });
