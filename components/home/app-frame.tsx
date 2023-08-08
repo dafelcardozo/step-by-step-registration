@@ -13,7 +13,7 @@ import Circle from '../shared/icons/circle';
 import PinkBlob from '../shared/icons/pink-blob';
 import BlueCurve from '../shared/icons/blue-curve';
 
-const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }, { title: "Thank you!" }];
+const steps = ["Your info", "Select plan", "Add-ons", "Summary", "Thank you!" ];
 
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
@@ -21,13 +21,9 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
-export default function AppFrame() {
+const TopStepsList = () => {
   const { step } = useSelector((state: ReduxState) => state.nav);
-  const theme = useTheme();
-  const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
-  const drawerWidth = 274;
-
-  const TopStepsList = () => (<Grid
+  return (<Grid
     container
     spacing={0}
     direction="column"
@@ -38,9 +34,9 @@ export default function AppFrame() {
     <Circle />
     <Birds2 />
     <PinkBlob />
-    <Stack direction='row' spacing={2} sx={{paddingTop:'50px'}}>
-      {steps.filter((s, index) => index < 4).map(({ title }, index) => (
-        <Item key={title}  >
+    <Stack direction='row' spacing={2} sx={{ paddingTop: '50px' }}>
+      {steps.filter((s, index) => index < 4).map((title, index) => (
+        <Item key={title}>
           <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : 'unset', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>
             {index + 1}
           </Avatar>
@@ -49,8 +45,12 @@ export default function AppFrame() {
     </Stack>
 
   </Grid>);
+};
 
-  const Sidebar = () => (<Drawer
+const Sidebar = () => {
+  const drawerWidth = 274;
+  const { step } = useSelector((state: ReduxState) => state.nav);
+  return (<Drawer
     sx={{
       width: drawerWidth,
       flexShrink: 0,
@@ -62,23 +62,21 @@ export default function AppFrame() {
         border: 0
       },
     }}
-    variant={isExtraSmallSize ? 'temporary' : 'permanent'}
+    variant='permanent'
     anchor="left"
   >
     <List>
-      {steps.filter((s, index) => index < 4).map(({ title }, index) => (
-        <ListItem key={title} disablePadding >
+      {steps.filter((_, index) => index < 4).map((title, index) => (
+        <ListItem key={title} disablePadding>
           <ListItemButton>
             <ListItemAvatar>
               <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : '#483EFF', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>
                 {index + 1}
               </Avatar>
             </ListItemAvatar>
-            {!isExtraSmallSize &&
               <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{ color: 'white' }} primaryTypographyProps={{ color: '#ABBCFF' }}>
                 {title}
               </ListItemText>
-            }
           </ListItemButton>
         </ListItem>
       ))}
@@ -88,11 +86,16 @@ export default function AppFrame() {
     <OrangeSun />
     <WhiteBirds />
   </Drawer>);
+};
+
+export default function AppFrame() {
+  const theme = useTheme();
+  const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid container height='100vh' >
       {isExtraSmallSize && <TopStepsList />}
       <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-125px' : undefined }} >
-        <Sidebar />
+        {!isExtraSmallSize && <Sidebar />}
         <Box sx={{ flexGrow: 1, p: 3 }} >
           <StepsCard />
         </Box>

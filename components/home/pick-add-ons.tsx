@@ -34,7 +34,7 @@ function CustomizableProfile() {
 
 function labelStyles(isChecked: boolean) {
     return {
-        padding: '20px',
+        //padding: '20px',
         border: '1px solid ' + (isChecked ? '#483EFF' : '#D6D9E6'),
         borderRadius: '8px',
         marginBottom: '16px',
