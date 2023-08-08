@@ -13,10 +13,13 @@ import { styled } from "@mui/material/styles";
 const StyledToggleButton = styled(ToggleButton)({
     textAlign:'unset',
     textTransform: 'unset',
+    // button: {
+    //     borderRadius:'8px !important'
+    // },
     "&.Mui-selected, &.Mui-selected:hover": {
         backgroundColor: '#F8F9FF',
         borderColor: '#483EFF',
-        borderRadius: '8px'
+        borderRadius: '8px !important',
     }
 });
 
@@ -51,16 +54,16 @@ type CheckedProps = {
 
 function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
     return (
-    <Grid container >
-        <Grid item>
-
+    <Grid container alignItems="center" spacing={1} >
+        <Grid item className={!
+            checked?'is_checked':undefined}>
+            Monthly
         </Grid>
         <Grid item>
             <Switch checked={checked} onChange={(e, checked) => onChange(checked)} />
-            
         </Grid>
-        <Grid item>
-        Yearly
+        <Grid item className={checked?'is_checked':undefined}>
+            Yearly
         </Grid>
     </Grid>)
 }
@@ -100,7 +103,7 @@ export default function SelectYourPlan() {
                 <StyledToggleButton value="pro" ><PlanButton plan="pro" icon={<ProIcon />} /></StyledToggleButton>
             </ToggleButtonGroup>
             <FormHelperText >{planError}</FormHelperText>
-            <FormControlLabel sx={{ backgroundColor: '#F8F9FF' }} control={<Switch checked={is_yearly} onChange={(e, checked) => dispatch(setIsYearly(checked))} />} label="Yearly" />
+            <DoubleLabeledSwitch checked={is_yearly} onChange={(checked) => dispatch(setIsYearly(checked))}/>
         </FormControl>
     );
 }
