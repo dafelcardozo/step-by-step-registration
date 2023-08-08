@@ -91,7 +91,7 @@ export default function AppFrame() {
   return (
     <Grid container height='100vh' >
       {isExtraSmallSize && <TopStepsList />}
-      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-200px' : undefined }} >
+      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-125px' : undefined }} >
         <Sidebar />
         <Box sx={{ flexGrow: 1, p: 3 }} >
           <StepsCard />

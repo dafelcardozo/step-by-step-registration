@@ -8,6 +8,13 @@ export const theme = createTheme({
       defaultProps: {
         color:'primary'
       }
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: '16px',
+        },
+      },
     }
   },
   palette: {
@@ -17,12 +24,14 @@ export const theme = createTheme({
   typography:{
     fontFamily: ["Ubuntu-Bold", "Helvetica"].join(","),
     h1: {
-        fontSize: '2rem',
         color: '#022959',
-        fontWeight: 'bolder'
+        fontWeight: '700',
+        fontSize:'24px'
     },
     subtitle1: {
-      color:'#9699AA'
+      color:'#9699AA',
+      fontWeight:'400',
+      fontSize: '16px'
     }
   }
 });

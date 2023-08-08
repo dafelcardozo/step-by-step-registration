@@ -30,7 +30,7 @@ export function ButtonsBar() {
                 <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button>
             </Grid>
             <Grid xs={6} alignItems="flex-end">
-                <Button variant="contained" onClick={() => nextClicked()} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
+                <Button variant="contained" onClick={nextClicked} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
             </Grid>
         </Grid>
     </Box>)
@@ -41,7 +41,7 @@ export default function StepsCard() {
     const { step } = useSelector((state: ReduxState) => state.nav);
     const theme = useTheme();
     const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
-    return (<Card sx={{minHeight:'402px'}}>
+    return (<Card sx={{minHeight:'402px', p:4 }}>
         {step == 1 && <PersonalInfoForm />}
         {step == 2 && <SelectYourPlan />}
         {step == 3 && <PickAddOns />}
