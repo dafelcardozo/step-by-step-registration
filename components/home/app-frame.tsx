@@ -23,17 +23,6 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
-export function AlignedToTheBottom() {
-  return (
-    <Grid container direction="column" justifyContent="end" sx={{ bgcolor: '#483EFF' }} height='100vh' >
-      <Button variant="contained">
-        Create New List
-      </Button>
-    </Grid>
-    );
-}
-
-
 export default function AppFrame() {
   const { step } = useSelector((state: ReduxState) => state.nav);
   const theme = useTheme();
