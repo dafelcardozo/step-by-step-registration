@@ -26,10 +26,10 @@ export function ButtonsBar() {
         display="flex"
         justifyContent="end" width={isExtraSmallSize?'100vw':undefined}>
         <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }} >
-            <Grid xs={6} alignItems="flex-start">
+            <Grid item xs={6} alignItems="flex-start">
                 <Button variant="text" onClick={() => dispatch(goPrevious(''))} sx={{ display: hasPrevious ? undefined : 'none' }}>Go back</Button>
             </Grid>
-            <Grid xs={6} alignItems="flex-end">
+            <Grid item xs={6} alignItems="flex-end">
                 <Button variant="contained" onClick={nextClicked} sx={{ display: step < 5 && hasNext ? undefined : 'none' }}>{step == 4 ? 'Confirm' : 'Next Step'}</Button>
             </Grid>
         </Grid>
