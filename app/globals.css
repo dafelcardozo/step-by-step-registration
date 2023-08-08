@@ -2,3 +2,7 @@
 .plan_title::first-letter {
     text-transform: uppercase;
 }
+
+.MuiOutlinedInput-root.Mui-focused fieldset{
+    border-color: 'yellow';
+}

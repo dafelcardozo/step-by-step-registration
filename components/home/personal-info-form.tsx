@@ -1,10 +1,11 @@
 "use client";
 import {ChangeEvent, useEffect, useState} from 'react';
-import { FormControl, TextField, FormLabel, Typography, Box } from '@mui/material';
+import { FormControl, TextField, FormLabel, Typography, Box, styled } from '@mui/material';
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setEmail, setPhone } from '../shared/personalInfoSlice';
 import { goNext, resetValidation } from '../shared/navigationSlice';
+
 
 export default function PersonalInfoForm() {
     const {step, is_valid_step} = useSelector((state: ReduxState) => state.nav);
@@ -42,7 +43,7 @@ export default function PersonalInfoForm() {
             noValidate
             autoComplete="off"
         >
-            <FormControl>
+            <FormControl sx={{'.MuiOutlinedInput-root.Mui-focused fieldset': {borderColor:'#483EFF'}}}>
                 <Typography variant="h1">Personal info</Typography>
                 <Typography variant="subtitle1">Please provide your name, email address, and phone number.</Typography>
                 <FormLabel>Name</FormLabel>
@@ -84,8 +85,7 @@ export default function PersonalInfoForm() {
                     }}
                     error={phoneError !== ''}
                     helperText={phoneError}
-                >
-                </TextField>
+                />
             </FormControl>
         </Box>
     );

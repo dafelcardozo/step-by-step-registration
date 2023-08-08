@@ -1,6 +1,6 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { pink, blueGrey } from '@mui/material/colors';
+import { pink, blueGrey, yellow } from '@mui/material/colors';
 
 export const theme = createTheme({
   components: {
@@ -26,7 +26,7 @@ export const theme = createTheme({
   },
   palette: {
     primary: blueGrey,
-    secondary: pink,
+    secondary: yellow,
   },
   typography:{
     fontFamily: ["Ubuntu-Bold", "Helvetica"].join(","),
@@ -41,6 +41,14 @@ export const theme = createTheme({
       fontSize: '16px',
       paddingTop:'15px',
       paddingBottom:'15px'
+    },
+    subtitle2: {
+      color:'#022959',
+      fontWeight:'500',
+      fontSize: '16px',
+      lineHeight:"18.38px",
+//      paddingTop:'15px',
+//      paddingBottom:'15px'
     }
   }
 });
