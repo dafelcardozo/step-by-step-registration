@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid } from '@mui/material';
+import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Button } from '@mui/material';
 import StepsCard, { ButtonsBar } from './steps-content-forms';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
@@ -23,19 +23,29 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
+export function AlignedToTheBottom() {
+  return (
+    <Grid container direction="column" justifyContent="end" sx={{ bgcolor: '#483EFF' }} height='100vh' >
+      <Button variant="contained">
+        Create New List
+      </Button>
+    </Grid>
+    );
+}
+
 
 export default function AppFrame() {
   const { step } = useSelector((state: ReduxState) => state.nav);
   const theme = useTheme();
   const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
 
-  const TopStepsList = (<Grid
+  const TopStepsList = () => (<Grid
     container
     spacing={0}
     direction="column"
     alignItems="center"
     justifyContent="start"
-    sx={{ bgcolor: '#483EFF' }} minHeight='200px'>
+    sx={{ bgcolor: '#483EFF' }} height='200px'>
     <BlueCurve />
     <Circle />
     <Birds2 />
@@ -52,7 +62,7 @@ export default function AppFrame() {
 
   </Grid>);
 
-  const Sidebar = (<Drawer
+  const Sidebar = () => (<Drawer
     sx={{
       width: drawerWidth,
       flexShrink: 0,
@@ -90,19 +100,16 @@ export default function AppFrame() {
     <OrangeSun />
     <WhiteBirds />
   </Drawer>);
-
   return (
-    <>
-      {isExtraSmallSize && TopStepsList}
-      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-150px' : undefined }} >
-        {Sidebar}
-        <Box
-          sx={{ flexGrow: 1, p: 3 }}
-        >
+    <Grid container height='100vh' >
+      {isExtraSmallSize && <TopStepsList />}
+      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-200px' : undefined }} >
+        <Sidebar />
+        <Box sx={{ flexGrow: 1, p: 3 }} >
           <StepsCard />
         </Box>
       </Box>
-      {isExtraSmallSize && <ButtonsBar />}
-    </>
+      {isExtraSmallSize && <ButtonsBar />}    
+    </Grid>
   );
 }
