@@ -11,7 +11,7 @@ export interface NavigationState {
 
 const initialState: NavigationState = {
   step:1,
-  hasPrevious: true,
+  hasPrevious: false,
   hasNext:true,
   nSteps: 5,
   is_valid_step: 'invalid'
