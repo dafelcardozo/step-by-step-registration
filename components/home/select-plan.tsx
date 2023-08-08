@@ -51,9 +51,7 @@ export default function SelectYourPlan() {
 
     const [planError, setPlanError] = useState('');
     useEffect(() => {
-        console.info('Use effect');
         if (step == 2 && is_valid_step === 'validating') {
-            console.info('Validating');
             if (!plan) {
                 setPlanError('You need to select a plan here!');
                 return;
@@ -64,7 +62,7 @@ export default function SelectYourPlan() {
     return (
         <FormControl error={planError !== ''}>
             <Typography variant="h1">Select your plan</Typography>
-            <div>You have the option of monthly or yearly billing.</div>
+            <Typography variant="subtitle1">You have the option of monthly or yearly billing.</Typography>
             <ToggleButtonGroup color="primary" orientation={isExtraSmallSize ? 'vertical' : undefined}
                 value={plan}
                 exclusive

@@ -52,7 +52,7 @@ export default function PickAddOns() {
     };
     return (<Box>
         <Typography variant="h1">Pick add-ons</Typography>
-        <div>Add-ons help enhance your gaming experience.</div>
+        <Typography variant="subtitle1">Add-ons help enhance your gaming experience.</Typography>
         <FormControl sx={{ padding: '5px' }}>
             <FormControlLabel sx={labelStyles(onlineService)} control={<Checkbox checked={onlineService} sx={checkBoxStyles} onChange={(e, checked) => dispatch(setOnlineService(checked))} />} label={<OnlineServiceLabel />} />
             <FormControlLabel sx={labelStyles(largerStorage)} control={<Checkbox checked={largerStorage} sx={checkBoxStyles} onChange={(e, checked) => dispatch(setLargerStorage(checked))} />} label={<LargerStorageLabel />} />

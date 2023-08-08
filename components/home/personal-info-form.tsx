@@ -1,4 +1,3 @@
-
 "use client";
 import {ChangeEvent, useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
@@ -46,7 +45,7 @@ export default function PersonalInfoForm() {
         >
             <FormControl>
                 <Typography variant="h1">Personal info</Typography>
-                <div>Please provide your name, email address, and phone number.</div>
+                <Typography variant="subtitle1">Please provide your name, email address, and phone number.</Typography>
                 <FormLabel>Name</FormLabel>
                 <TextField
                     value={name}
