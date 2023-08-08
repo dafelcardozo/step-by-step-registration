@@ -11,6 +11,8 @@ import { goNext, resetValidation } from '../shared/navigationSlice';
 import { styled } from "@mui/material/styles";
 
 const StyledToggleButton = styled(ToggleButton)({
+    textAlign:'unset',
+    textTransform: 'unset',
     "&.Mui-selected, &.Mui-selected:hover": {
         backgroundColor: '#F8F9FF',
         borderColor: '#483EFF',
@@ -35,11 +37,32 @@ function PlanButton({plan, icon}:PlanButtonProps) {
             {icon}
         </Grid>
         <Grid>
-            <div>{plan}</div>
+            <Typography variant="subtitle2" className='plan_title'>{plan}</Typography>
             <div>${planPricing[plan]}/{period}</div>
             {is_yearly && <div>2 months free</div>}
         </Grid>
     </Grid>);
+}
+
+type CheckedProps = {
+    checked: boolean,
+    onChange: (checked:boolean) => void
+}
+
+function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
+    return (
+    <Grid container >
+        <Grid item>
+
+        </Grid>
+        <Grid item>
+            <Switch checked={checked} onChange={(e, checked) => onChange(checked)} />
+            
+        </Grid>
+        <Grid item>
+        Yearly
+        </Grid>
+    </Grid>)
 }
 
 export default function SelectYourPlan() {

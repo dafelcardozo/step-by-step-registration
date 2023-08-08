@@ -44,7 +44,7 @@ export const theme = createTheme({
     },
     subtitle2: {
       color:'#022959',
-      fontWeight:'500',
+      fontWeight:'bolder',
       fontSize: '16px',
       lineHeight:"18.38px",
 //      paddingTop:'15px',

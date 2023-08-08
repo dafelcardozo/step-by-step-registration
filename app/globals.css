@@ -1,6 +1,6 @@
 
-.plan_title::first-letter {
-    text-transform: uppercase;
+.plan_title {
+    text-transform: capitalize;
 }
 
 .MuiOutlinedInput-root.Mui-focused fieldset{
