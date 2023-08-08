@@ -9,16 +9,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 export const metadata = {
-  title: "A Multi-Step form to record user preferences",
-  description:
-    "Felipe's demo for MUI",
-  twitter: {
-    card: "summary_large_image",
-    title: "A Multi-Step form to record user preferences",
-    description:
-      "Felipe Cardozo is a colombian web developer",
-    creator: "@dafelcardozo",
-  },
+  title: "Select your gaming subscription plan",
+  description: "A simple demo with Material UI, React, Next.js",
   metadataBase: new URL("https://david-felipe-cardozo.com"),
 };
 

@@ -13,8 +13,6 @@ import Circle from '../shared/icons/circle';
 import PinkBlob from '../shared/icons/pink-blob';
 import BlueCurve from '../shared/icons/blue-curve';
 
-const drawerWidth = 274;
-
 const steps = [{ title: "Your info" }, { title: "Select plan" }, { title: "Add-ons" }, { title: "Summary" }, { title: "Thank you!" }];
 
 const Item = styled(Box)(({ theme }) => ({
@@ -27,6 +25,7 @@ export default function AppFrame() {
   const { step } = useSelector((state: ReduxState) => state.nav);
   const theme = useTheme();
   const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
+  const drawerWidth = 274;
 
   const TopStepsList = () => (<Grid
     container
