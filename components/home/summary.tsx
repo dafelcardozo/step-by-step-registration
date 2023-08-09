@@ -39,7 +39,7 @@ export default function Summary() {
         <Typography variant="h1">Finishing up</Typography>
         <Typography variant="subtitle1">Double-check everything looks OK before confirming.</Typography>
         <Paper sx={{ bgcolor: '#F8F9FF' }} elevation={0}>
-            <Grid container rowSpacing={1} columnSpacing={{  sm: 2, md: 3 }} >
+            <Grid container rowSpacing={1} columnSpacing={{  xs:8, md: 4 }} >
                 <Grid item xs={6} className='plan_title' >
                     <Typography variant="subtitle2">{plan} ({is_yearly ? 'Yearly' : 'Monthly'})</Typography>
                     <Link onClick={() => dispatch(goToStep(2))}>Change</Link>
@@ -53,11 +53,11 @@ export default function Summary() {
                 {customizableProfile && <AddOnRow description="Customizable profile" monthlyPrice={2} />}
             </Grid>
         </Paper>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 6, sm: 2, md: 3 }} >
-            <Grid item xs={6}>
+        <Grid container rowSpacing={2} columnSpacing={{ xs:8, md: 4 }} paddingTop='20px'>
+            <Grid item xs={8}>
                 Total (per {period})
             </Grid>
-            <Grid item xs={6} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }}>+${bigSum}/{periodAbbrev}</Grid>
+            <Grid item xs={4} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }}>+${bigSum}/{periodAbbrev}</Grid>
         </Grid>
     </Box>);
 }

@@ -70,7 +70,6 @@ export default function SelectYourPlan() {
     const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const dispatch = useDispatch();
     const { step, is_valid_step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
-
     const [planError, setPlanError] = useState('');
     useEffect(() => {
         if (step == 2 && is_valid_step === 'validating') {
@@ -88,7 +87,7 @@ export default function SelectYourPlan() {
             <ToggleButtonGroup color="primary" orientation={isExtraSmallSize ? 'vertical' : undefined}
                 value={plan}
                 exclusive
-                onChange={(e, selection) => {
+                onChange={(_, selection) => {
                     dispatch(setPlan(selection));
                     dispatch(resetValidation(''));
                     setPlanError('');
