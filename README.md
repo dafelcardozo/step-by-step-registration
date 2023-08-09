@@ -7,9 +7,21 @@ http://david-felipe-cardozo.com.co/ .
 
 ## Deployment environment
 
-This app is deployed at Vercel, a cloud platform that specializes in Next.js and React applications. It internally uses GCP machines. 
+### On the cloud
 
-## Tech Stack & components
+This app is deployed at Vercel, a cloud platform that specializes in Next.js and React applications. It internally uses GCP VMs.
+
+A continous deployment pipeline of both Vercel and Github was configured for this app.
+
+### On a local dev machine
+
+- Install [PNpM](https://pnpm.io/), the packaging and distribution management library. The app is strongly dependent on it, and therefore is the major requisite.
+- Git-fetch this repo, and run `pnpm install`.
+- Run the app with `pnpm run dev`, the default port is 3000.  
+
+## Tech stack & components
+
+The app was initiated from a template on https://precedent.dev by Steven Tey ([@steventey](https://twitter.com/steventey)).
 
 ### Frameworks
 
