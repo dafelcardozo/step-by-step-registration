@@ -6,7 +6,7 @@ import ProIcon from '../shared/icons/pro-icon';
 import { setIsYearly, setPlan } from '../shared/planSlice';
 import { ReduxState } from '../shared/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { goNext, resetValidation } from '../shared/navigationSlice';
+import { goNext, goToStep, resetValidation } from '../shared/navigationSlice';
 
 import { styled } from "@mui/material/styles";
 
@@ -77,7 +77,7 @@ export default function SelectYourPlan() {
                 setPlanError('You need to select a plan here!');
                 return;
             }
-            dispatch(goNext(''));
+            dispatch(goToStep(3));
         }
     }, [step, is_valid_step])
     return (

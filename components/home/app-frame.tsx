@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Card, Paper } from '@mui/material';
-import StepsContainer, { ButtonsBar } from './steps-content-forms';
+import StepsContainer from './steps-container';
+import { ButtonsBar } from './buttons-bar';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
@@ -58,7 +59,7 @@ const StyledPaper = styled(Paper)({
   backgroundColor: '#483EFF',
   color: 'white',
   border: 0,
-  height:'580px',
+  height: '580px',
   borderRadius: '16px',
 })
 
@@ -102,7 +103,7 @@ export default function AppFrame() {
     <Card sx={{ p: 1, height: '600px' }} >
       <Grid container sx={{ display: 'flex' }}  >
         <Sidebar />
-        <Box sx={{ flexGrow: 1, p: 3 }} id="stepsWrapper">
+        <Box sx={{ flexGrow: 1, p: 3, width: '500px' }} id="stepsWrapper">
           <StepsContainer />
         </Box>
       </Grid>
@@ -121,9 +122,9 @@ export default function AppFrame() {
     <ButtonsBar />
   </>);
 
-  return <Grid container  direction="column" alignItems="center" height='100vh' spacing={0}  justifyContent="center">
+  return <Grid container direction="column" alignItems="center" height='100vh' spacing={0} justifyContent="center">
     <Grid item xs={3}>
-    {isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />}
+      {isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />}
     </Grid>
-    </Grid>;
+  </Grid>;
 }

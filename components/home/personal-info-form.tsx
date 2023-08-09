@@ -4,7 +4,7 @@ import { FormControl, TextField, FormLabel, Typography, Box } from '@mui/materia
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setEmail, setPhone } from '../shared/personalInfoSlice';
-import { goNext, resetValidation } from '../shared/navigationSlice';
+import { goToStep,  resetValidation } from '../shared/navigationSlice';
 
 
 export default function PersonalInfoForm() {
@@ -38,7 +38,7 @@ export default function PersonalInfoForm() {
                 setPhoneError("Phone input is wrong, try a format such as (123) 456-7890 123.456.7890 +31636363634 ");
                 return;
             }
-            dispatch(goNext(''));
+            dispatch(goToStep(2));
         }
 
     }, [step, is_valid_step])
