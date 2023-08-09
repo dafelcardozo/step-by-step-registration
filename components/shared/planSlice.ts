@@ -4,11 +4,21 @@ import { AppState } from "./store";
 export interface PlanSelectionState {
   plan: string;
   is_yearly: boolean,
+  periodAbbrev: string,
+  period: string,
+  periodAdverb: string
+}
+
+const monthlyPeriod = {  
+  periodAbbrev: 'mo',
+  period: 'month',
+  periodAdverb: 'monthly'
 }
 
 const initialState: PlanSelectionState = {
   plan: '',
-  is_yearly: false,
+  is_yearly: false, 
+  ...monthlyPeriod
 };
 
 export const planSelectionSlice = createSlice({
@@ -20,6 +30,15 @@ export const planSelectionSlice = createSlice({
     },
     setIsYearly(state, action) {
         state.is_yearly = action.payload;
+        if (state.is_yearly) {
+          state.periodAbbrev = 'mo';
+          state.period = 'month';
+          state.periodAdverb = 'monthly';
+        } else {
+          state.periodAbbrev = 'yr';
+          state.period = 'year';
+          state.periodAdverb = 'yearly';
+        }
     }
   }
 });
