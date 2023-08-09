@@ -121,14 +121,7 @@ export default function AppFrame() {
     <ButtonsBar />
   </>);
 
-  return <Grid container height='100vh'  
-  
-  spacing={0}
-  direction="column"
-  alignItems="center"
-  justify="center"
-  
-  >
+  return <Grid container  direction="column" alignItems="center" height='100vh' spacing={0}  justifyContent="center">
     <Grid item xs={3}>
     {isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />}
     </Grid>
