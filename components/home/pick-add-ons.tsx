@@ -16,7 +16,6 @@ type AddOn = {
     description:string
 }
 
-
 function AddOnCard({ title, monthlyPrice, description }: AddOnCardProps) {
     const { is_yearly, periodAbbrev } = useSelector((state: ReduxState) => state.planInfo);
     return (<>
@@ -31,18 +30,6 @@ const addOns:Array<AddOn> = [
     {title:"Larger storage", monthlyPrice:2, description:"Extra 1TB of cloud save"},
     {title:"Customizable Profile", monthlyPrice:2, description: "Custom theme on your profile"}
 ];
-
-function OnlineServiceLabel() {
-    return <AddOnCard title="Online service" monthlyPrice={1} description="Access to multiplayer games" />
-}
-
-function LargerStorageLabel() {
-    return <AddOnCard title="Larger storage" monthlyPrice={2} description="Extra 1TB of cloud save" />
-}
-
-function CustomizableProfile() {
-    return <AddOnCard title="Customizable Profile" monthlyPrice={2} description="Custom theme on your profile"/>
-}
 
 function labelStyles(isChecked: boolean) {
     return {
@@ -65,9 +52,9 @@ export default function PickAddOns() {
         <Typography variant="h1">Pick add-ons</Typography>
         <Typography variant="subtitle1">Add-ons help enhance your gaming experience.</Typography>
         <FormControl sx={{ padding: '5px' }}>
-            <FormControlLabel sx={labelStyles(onlineService)} control={<Checkbox checked={onlineService} sx={checkBoxStyles} onChange={(_, checked) => dispatch(setOnlineService(checked))} />} label={<OnlineServiceLabel />} />
-            <FormControlLabel sx={labelStyles(largerStorage)} control={<Checkbox checked={largerStorage} sx={checkBoxStyles} onChange={(_, checked) => dispatch(setLargerStorage(checked))} />} label={<LargerStorageLabel />} />
-            <FormControlLabel sx={labelStyles(customizableProfile)} control={<Checkbox checked={customizableProfile} sx={checkBoxStyles} onChange={(e, checked) => dispatch(setCustomizableProfile(checked))} />} label={<CustomizableProfile />} />
+            <FormControlLabel sx={labelStyles(onlineService)} control={<Checkbox checked={onlineService} sx={checkBoxStyles} onChange={(_, checked) => dispatch(setOnlineService(checked))} />} label={<AddOnCard {...addOns[0]} />} />
+            <FormControlLabel sx={labelStyles(largerStorage)} control={<Checkbox checked={largerStorage} sx={checkBoxStyles} onChange={(_, checked) => dispatch(setLargerStorage(checked))} />} label={<AddOnCard {...addOns[1]} />} />
+            <FormControlLabel sx={labelStyles(customizableProfile)} control={<Checkbox checked={customizableProfile} sx={checkBoxStyles} onChange={(e, checked) => dispatch(setCustomizableProfile(checked))} />} label={<AddOnCard {...addOns[2]} />} />
         </FormControl>
     </Box>);
 }
