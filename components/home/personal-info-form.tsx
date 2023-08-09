@@ -1,6 +1,6 @@
 "use client";
 import {ChangeEvent, useEffect, useState} from 'react';
-import { FormControl, TextField, FormLabel, Typography, Box, styled } from '@mui/material';
+import { FormControl, TextField, FormLabel, Typography, Box } from '@mui/material';
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { setName, setEmail, setPhone } from '../shared/personalInfoSlice';
@@ -22,9 +22,14 @@ export default function PersonalInfoForm() {
                 setNameError('This field is required');
                 return;
             }
+            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             if (!email) {
                 setEmailError('This field is required');
                 return;
+            }
+            if (email && !email.match(emailRegex)) {
+                setEmailError("Email is incorrect, it should be similar to someone@somewhere.com");
+                return
             }
             if (!phone) {
                 setPhoneError('This field is required');
