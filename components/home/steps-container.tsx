@@ -1,4 +1,3 @@
-import { Card } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import PersonalInfoForm from './personal-info-form';
