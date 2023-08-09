@@ -1,6 +1,6 @@
-import {useEffect} from 'react';
-import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid } from '@mui/material';
-import StepsCard, { ButtonsBar } from './steps-content-forms';
+import { useEffect } from 'react';
+import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Card } from '@mui/material';
+import StepsContainer, { ButtonsBar } from './steps-content-forms';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
@@ -12,9 +12,9 @@ import Birds2 from '../shared/icons/birds2';
 import Circle from '../shared/icons/circle';
 import PinkBlob from '../shared/icons/pink-blob';
 import BlueCurve from '../shared/icons/blue-curve';
-import {setExtraSmallSize} from '@/components/shared/navigationSlice';
+import { setExtraSmallSize } from '@/components/shared/navigationSlice';
 
-const steps = ["Your info", "Select plan", "Add-ons", "Summary", "Thank you!" ];
+const steps = ["Your info", "Select plan", "Add-ons", "Summary", "Thank you!"];
 
 const Item = styled(Box)(({ theme }) => ({
   ...theme.typography.body2,
@@ -31,11 +31,11 @@ const TopStepsList = () => {
     alignItems="center"
     justifyContent="start"
     sx={{ bgcolor: '#483EFF' }} height='200px'>
-      <div>
-    <BlueCurve />
-    <Circle />
-    <Birds2 />
-    <PinkBlob />
+    <div>
+      <BlueCurve />
+      <Circle />
+      <Birds2 />
+      <PinkBlob />
     </div>
     <Stack direction='row' spacing={2} sx={{ paddingTop: '50px' }}>
       {steps.filter((s, index) => index < 4).map((title, index) => (
@@ -50,19 +50,33 @@ const TopStepsList = () => {
   </Grid>);
 };
 
-const Sidebar = () => {
-  const drawerWidth = 274;
-  const { step } = useSelector((state: ReduxState) => state.nav);
-  return (<Drawer
-    sx={{
-      width: drawerWidth,
-      flexShrink: 0,
-      '& .MuiDrawer-paper': {
-        width: drawerWidth,
-        boxSizing: 'border-box',
-        backgroundColor: '#483EFF',
+const drawerWidth = 274;
+
+
+const StyledDrawer = styled(Drawer)({
+  position: "relative", //imp
+  width: drawerWidth, //drawer width
+  flexShrink: 0,
+  "& .MuiDrawer-paper": {
+    width: drawerWidth, //drawer width
+    position: "absolute", //imp
+    transition: "none !important",
+    backgroundColor: '#483EFF',
         color: 'white',
         border: 0
+  }
+})
+
+const Sidebar = () => {
+  const { step } = useSelector((state: ReduxState) => state.nav);
+  return (<StyledDrawer
+    sx={{
+      width: drawerWidth,
+      
+      '& .MuiDrawer-paper': {
+        //width: drawerWidth,
+        //boxSizing: 'border-box',
+        
       },
     }}
     variant='permanent'
@@ -77,9 +91,9 @@ const Sidebar = () => {
                 {index + 1}
               </Avatar>
             </ListItemAvatar>
-              <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{ color: 'white' }} primaryTypographyProps={{ color: '#ABBCFF' }}>
-                {title}
-              </ListItemText>
+            <ListItemText primary={`STEP ${index + 1}`} secondary={title} sx={{ color: 'white' }} secondaryTypographyProps={{ color: 'white' }} primaryTypographyProps={{ color: '#ABBCFF' }}>
+              {title}
+            </ListItemText>
           </ListItemButton>
         </ListItem>
       ))}
@@ -88,29 +102,41 @@ const Sidebar = () => {
     <OrangeMountain />
     <OrangeSun />
     <WhiteBirds />
-  </Drawer>);
+  </StyledDrawer>);
 };
 
 export default function AppFrame() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const query = useMediaQuery(theme.breakpoints.down("md"));
-  
+
   useEffect(() => {
     dispatch(setExtraSmallSize(query));
   });
   const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
-  
-  return (
-    <Grid container height='100vh' >
-      {isExtraSmallSize && <TopStepsList />}
-      <Box sx={{ display: 'flex', position: isExtraSmallSize ? 'relative' : undefined, top: isExtraSmallSize ? '-125px' : undefined }} >
-        {!isExtraSmallSize && <Sidebar />}
-        <Box sx={{ flexGrow: 1, p: 3 }} >
-          <StepsCard />
+
+  const LargeScreenFrame = () => (
+    <Card sx={{  p: 0.5, maxHeight:'600px' }} >
+      <Box sx={{ display: 'flex' }}  >
+        <Sidebar />
+        <Box sx={{ flexGrow: 1, p: 3 }} id="stepsWrapper">
+          <StepsContainer />
         </Box>
       </Box>
-      {isExtraSmallSize && <ButtonsBar />}    
-    </Grid>
-  );
+    </Card>
+);
+
+  const SmallScreenFrame = () => (<>
+    <TopStepsList />
+    <Box sx={{ display: 'flex', position: 'relative', top: '-125px' }}  >
+      <Box sx={{ flexGrow: 1, p: 3 }} id="stepsWrapper">
+        <Card sx={{ minHeight: '402px', p: 4 }}>
+          <StepsContainer />
+        </Card>
+      </Box>
+    </Box>
+    <ButtonsBar />
+  </>);
+
+  return <Grid container height='100vh'  >{isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />}</Grid>;
 }

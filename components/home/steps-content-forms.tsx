@@ -7,13 +7,10 @@ import SelectYourPlan from './select-plan';
 import PickAddOns from './pick-add-ons';
 import Summary from './summary';
 import ThankYou from './thank-you';
-import { useMediaQuery, useTheme } from "@mui/material";
 
 export function ButtonsBar() {
     const { hasPrevious, hasNext, step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
     const dispatch = useDispatch();
-    const theme = useTheme();
-    //const isExtraSmallSize = true; //useMediaQuery(theme.breakpoints.down("md"));
 
     const nextClicked = () => {
         if ([1, 2].includes(step))
@@ -37,16 +34,14 @@ export function ButtonsBar() {
 }
 
 
-export default function StepsCard() {
+export default function StepsContainer() {
     const { step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
-    const theme = useTheme();
-    //const isExtraSmallSize = true;// useMediaQuery(theme.breakpoints.down("md"));
-    return (<Card sx={{minHeight:'402px', p:4 }}>
+    return (<>
         {step == 1 && <PersonalInfoForm />}
         {step == 2 && <SelectYourPlan />}
         {step == 3 && <PickAddOns />}
         {step == 4 && <Summary />}
         {step == 5 && <ThankYou />}
         {!isExtraSmallSize && <ButtonsBar />}
-    </Card>);
+    </>);
 }
