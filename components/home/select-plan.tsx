@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'; 
-import { FormControl, ToggleButtonGroup, ToggleButton, Switch, FormControlLabel, Typography, useTheme, useMediaQuery, Grid, FormHelperText } from '@mui/material';
+import { FormControl, ToggleButtonGroup, ToggleButton, Switch, Typography, Grid, FormHelperText } from '@mui/material';
 import ArcadeIcon from '../shared/icons/arcade-icon';
 import AdvancedIcon from '../shared/icons/advanced';
 import ProIcon from '../shared/icons/pro-icon';
