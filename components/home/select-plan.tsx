@@ -32,8 +32,7 @@ interface PlanButtonProps {
 }
 
 function PlanButton({plan, icon}:PlanButtonProps) {
-    const { is_yearly } = useSelector((state: ReduxState) => state.planInfo);
-    const period = is_yearly ? 'yr' : 'mo';
+    const { is_yearly, periodAbbrev } = useSelector((state: ReduxState) => state.planInfo);
     const planPricing = is_yearly? yearlyPlanPricing:monthlyPlanPricing;
     return (<Grid container>
         <Grid item xs={3}>
@@ -41,7 +40,7 @@ function PlanButton({plan, icon}:PlanButtonProps) {
         </Grid>
         <Grid>
             <Typography variant="subtitle2" className='plan_title'>{plan}</Typography>
-            <div>${planPricing[plan]}/{period}</div>
+            <div>${planPricing[plan]}/{periodAbbrev}</div>
             {is_yearly && <div>2 months free</div>}
         </Grid>
     </Grid>);
