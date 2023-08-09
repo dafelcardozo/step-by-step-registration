@@ -1,4 +1,4 @@
-import { Box, Link, Grid, Typography, Paper } from "@mui/material";
+import { Box, Link, Grid, Typography, Paper, Divider } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { ReduxState } from "../shared/store";
 import { goToStep } from "../shared/navigationSlice";
@@ -38,7 +38,7 @@ export default function Summary() {
     return (<Box>
         <Typography variant="h1">Finishing up</Typography>
         <Typography variant="subtitle1">Double-check everything looks OK before confirming.</Typography>
-        <Paper sx={{ bgcolor: '#F8F9FF' }}>
+        <Paper sx={{ bgcolor: '#F8F9FF' }} elevation={0}>
             <Grid container rowSpacing={1} columnSpacing={{  sm: 2, md: 3 }} >
                 <Grid item xs={6} className='plan_title' >
                     <Typography variant="subtitle2">{plan} ({is_yearly ? 'Yearly' : 'Monthly'})</Typography>
@@ -47,6 +47,7 @@ export default function Summary() {
                 <Grid item xs={6} sx={{textAlign:'right'}}>
                     <Typography variant="subtitle2">{planPricing}/{periodAbbrev} </Typography>
                 </Grid>
+                <Divider orientation="horizontal" flexItem style={{width:'100%'}} />
                 {onlineService && <AddOnRow description="Online service" monthlyPrice={1} />}
                 {largerStorage && <AddOnRow description="Larger storage" monthlyPrice={2} />}
                 {customizableProfile && <AddOnRow description="Customizable profile" monthlyPrice={2} />}
