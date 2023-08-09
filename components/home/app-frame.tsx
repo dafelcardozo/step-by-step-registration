@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Card } from '@mui/material';
+import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Card, Paper } from '@mui/material';
 import StepsContainer, { ButtonsBar } from './steps-content-forms';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
@@ -50,38 +50,21 @@ const TopStepsList = () => {
   </Grid>);
 };
 
-const drawerWidth = 274;
-
-
-const StyledDrawer = styled(Drawer)({
-  position: "relative", //imp
-  width: drawerWidth, //drawer width
+const StyledPaper = styled(Paper)({
+  position: "relative",
+  width: 274,
   flexShrink: 0,
-  "& .MuiDrawer-paper": {
-    width: drawerWidth, //drawer width
-    position: "absolute", //imp
-    transition: "none !important",
-    backgroundColor: '#483EFF',
-        color: 'white',
-        border: 0
-  }
+  transition: "none !important",
+  backgroundColor: '#483EFF',
+  color: 'white',
+  border: 0,
+  height:'580px',
+  borderRadius: '16px',
 })
 
 const Sidebar = () => {
   const { step } = useSelector((state: ReduxState) => state.nav);
-  return (<StyledDrawer
-    sx={{
-      width: drawerWidth,
-      
-      '& .MuiDrawer-paper': {
-        //width: drawerWidth,
-        //boxSizing: 'border-box',
-        
-      },
-    }}
-    variant='permanent'
-    anchor="left"
-  >
+  return (<StyledPaper elevation={0} >
     <List>
       {steps.filter((_, index) => index < 4).map((title, index) => (
         <ListItem key={title} disablePadding>
@@ -102,7 +85,7 @@ const Sidebar = () => {
     <OrangeMountain />
     <OrangeSun />
     <WhiteBirds />
-  </StyledDrawer>);
+  </StyledPaper>);
 };
 
 export default function AppFrame() {
@@ -116,15 +99,15 @@ export default function AppFrame() {
   const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
 
   const LargeScreenFrame = () => (
-    <Card sx={{  p: 0.5, maxHeight:'600px' }} >
-      <Box sx={{ display: 'flex' }}  >
+    <Card sx={{ p: 1, height: '600px' }} >
+      <Grid container sx={{ display: 'flex' }}  >
         <Sidebar />
         <Box sx={{ flexGrow: 1, p: 3 }} id="stepsWrapper">
           <StepsContainer />
         </Box>
-      </Box>
+      </Grid>
     </Card>
-);
+  );
 
   const SmallScreenFrame = () => (<>
     <TopStepsList />
