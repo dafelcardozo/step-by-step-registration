@@ -94,13 +94,10 @@ const Sidebar = () => {
 export default function AppFrame() {
   const dispatch = useDispatch();
   const theme = useTheme();
-
   const query = useMediaQuery(theme.breakpoints.down("md"));
   
   useEffect(() => {
-    console.info('Writing');
     dispatch(setExtraSmallSize(query));
-
   });
   const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
   
