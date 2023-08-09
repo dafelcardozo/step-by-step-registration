@@ -22,17 +22,20 @@ export default function PersonalInfoForm() {
                 setNameError('This field is required');
                 return;
             }
-            const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             if (!email) {
                 setEmailError('This field is required');
                 return;
             }
-            if (email && !email.match(emailRegex)) {
-                setEmailError("Email is incorrect, it should be similar to someone@somewhere.com");
+            if (email && !email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)) {
+                setEmailError("Email input is wrong, it should be similar to someone@somewhere.com");
                 return
             }
             if (!phone) {
                 setPhoneError('This field is required');
+                return;
+            }
+            if (phone && !phone.match(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)) {
+                setPhoneError("Phone input is wrong, try a format such as (123) 456-7890 123.456.7890 +31636363634 ");
                 return;
             }
             dispatch(goNext(''));
