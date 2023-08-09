@@ -1,7 +1,7 @@
-import * as React from 'react';
+import {useEffect} from 'react';
 import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid } from '@mui/material';
 import StepsCard, { ButtonsBar } from './steps-content-forms';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
 import BlueMountain from '../shared/icons/blue-mountain';
@@ -12,6 +12,7 @@ import Birds2 from '../shared/icons/birds2';
 import Circle from '../shared/icons/circle';
 import PinkBlob from '../shared/icons/pink-blob';
 import BlueCurve from '../shared/icons/blue-curve';
+import {setExtraSmallSize} from '@/components/shared/navigationSlice';
 
 const steps = ["Your info", "Select plan", "Add-ons", "Summary", "Thank you!" ];
 
@@ -30,10 +31,12 @@ const TopStepsList = () => {
     alignItems="center"
     justifyContent="start"
     sx={{ bgcolor: '#483EFF' }} height='200px'>
+      <div>
     <BlueCurve />
     <Circle />
     <Birds2 />
     <PinkBlob />
+    </div>
     <Stack direction='row' spacing={2} sx={{ paddingTop: '50px' }}>
       {steps.filter((s, index) => index < 4).map((title, index) => (
         <Item key={title}>
@@ -89,8 +92,18 @@ const Sidebar = () => {
 };
 
 export default function AppFrame() {
+  const dispatch = useDispatch();
   const theme = useTheme();
-  const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
+
+  const query = useMediaQuery(theme.breakpoints.down("md"));
+  
+  useEffect(() => {
+    console.info('Writing');
+    dispatch(setExtraSmallSize(query));
+
+  });
+  const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
+  
   return (
     <Grid container height='100vh' >
       {isExtraSmallSize && <TopStepsList />}

@@ -70,9 +70,7 @@ function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
 export default function SelectYourPlan() {
     const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const dispatch = useDispatch();
-    const theme = useTheme();
-    const isExtraSmallSize = useMediaQuery(theme.breakpoints.down("md"));
-    const { step, is_valid_step } = useSelector((state: ReduxState) => state.nav);
+    const { step, is_valid_step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
 
     const [planError, setPlanError] = useState('');
     useEffect(() => {

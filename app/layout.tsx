@@ -28,8 +28,8 @@ export default async function RootLayout({
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
           <Nav />
+          <main>{children}</main>
         </Suspense>
-        <main>{children}</main>
         <Analytics />
       </body>
     </html>

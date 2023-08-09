@@ -6,7 +6,8 @@ export interface NavigationState {
   hasPrevious: boolean,
   hasNext: boolean,
   nSteps: number,
-  is_valid_step: string
+  is_valid_step: string,
+  isExtraSmallSize:boolean
 }
 
 const initialState: NavigationState = {
@@ -14,7 +15,8 @@ const initialState: NavigationState = {
   hasPrevious: false,
   hasNext:true,
   nSteps: 5,
-  is_valid_step: 'invalid'
+  is_valid_step: 'invalid',
+  isExtraSmallSize: true
 };
 
 function setButtonsVisibility(state:any) {
@@ -46,11 +48,15 @@ export const navigationSlice = createSlice({
     },
     resetValidation(state, action) {
       state.is_valid_step = 'invalid';
+    },
+    setExtraSmallSize(state, action){
+      if (state.isExtraSmallSize != action.payload)
+        state.isExtraSmallSize = action.payload;
     }
   }
 });
 
-export const { goNext, goPrevious, goToStep, validateStep, resetValidation } = navigationSlice.actions;
+export const { goNext, goPrevious, goToStep, validateStep, resetValidation, setExtraSmallSize } = navigationSlice.actions;
 
 export const navigationState = (state: AppState) => state.nav;
 
