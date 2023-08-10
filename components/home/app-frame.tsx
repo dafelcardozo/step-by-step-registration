@@ -94,14 +94,18 @@ const Sidebar = () => {
 };
 
 const LargeScreenFrame = () => (
-  <Card sx={{ p: 1, maxWidth: '900px', maxHeight:'800px', width: '900px' }} >
-    <Grid container sx={{ display: 'flex' }}  >
-      <Sidebar />
-      <Box sx={{ flexGrow: 1, p: 3, height:'600px', width:'600px' }} id="stepsWrapper">
-        <StepsContainer />
-      </Box>
+  <Grid container direction="column" alignItems="center" height='100vh' spacing={0} justifyContent="center">
+    <Grid item xs={3}>
+      <Card sx={{ p: 1, maxWidth: '900px', maxHeight: '800px', width: '900px' }} >
+        <Grid container sx={{ display: 'flex' }}  >
+          <Sidebar />
+          <Box sx={{ flexGrow: 1, p: 3, height: '600px', width: '600px' }} id="stepsWrapper">
+            <StepsContainer />
+          </Box>
+        </Grid>
+      </Card>
     </Grid>
-  </Card>
+  </Grid>
 );
 
 const SmallScreenFrame = () => (<>
