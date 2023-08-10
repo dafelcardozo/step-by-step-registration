@@ -122,7 +122,6 @@ const SmallScreenFrame = () => (<>
 </>
 );
 
-
 export default function AppFrame() {
   const dispatch = useDispatch();
   const theme = useTheme();

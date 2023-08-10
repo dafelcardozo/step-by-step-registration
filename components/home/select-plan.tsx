@@ -19,7 +19,7 @@ const StyledToggleButton = styled(ToggleButton)({
     "&.Mui-selected, &.Mui-selected:hover": {
         backgroundColor: '#F8F9FF',
         borderColor: '#483EFF',
-        borderRadius: '8px !important',
+   //     borderRadius: '8px !important',
     }
 });
 

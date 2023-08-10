@@ -11,7 +11,6 @@ export default function PersonalInfoForm() {
     const {step, is_valid_step} = useSelector((state: ReduxState) => state.nav);
     const { email, name, phone } = useSelector((state: ReduxState) => state.personalInfo);
     const dispatch = useDispatch();
-
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [phoneError, setPhoneError] = useState('');
@@ -45,9 +44,6 @@ export default function PersonalInfoForm() {
     return (
         <Box
             component="form"
-            sx={{
-                '& .MuiTextField-root': { m: 1 },
-            }}
             noValidate
             autoComplete="off" 
         >
@@ -63,7 +59,6 @@ export default function PersonalInfoForm() {
                         dispatch(resetValidation(''));
                     } }
                     variant='outlined'
-
                     placeholder='e.g. Stephen King'
                     size="small"
                     error={nameError !== ''}

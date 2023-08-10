@@ -12,7 +12,9 @@ export const theme = createTheme({
         root: {
           color: '#022959',
           fontWeight: '400',
-          fontSize: '12px'
+          fontSize: '12px',
+          paddingTop: '10px',
+          lineHeight: '2em'
         },
       },
     },
