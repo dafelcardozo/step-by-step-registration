@@ -5,7 +5,7 @@ import { ReduxState } from '@/components/shared/store';
 
 
 export function ButtonsBar() {
-    const { hasPrevious, hasNext, step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
+    const { hasPrevious, hasNext, step } = useSelector((state: ReduxState) => state.nav);
     const dispatch = useDispatch();
 
     const nextClicked = () => {

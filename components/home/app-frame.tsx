@@ -99,9 +99,14 @@ const LargeScreenFrame = () => (
       <Card sx={{ p: 1, maxWidth: '900px', maxHeight: '800px', width: '900px' }} >
         <Grid container sx={{ display: 'flex' }}  >
           <Sidebar />
-          <Box sx={{ flexGrow: 1, p: 3, height: '600px', width: '600px' }} id="stepsWrapper">
-            <StepsContainer />
-          </Box>
+          <Grid direction={'column'} sx={{  p: 3, height: '600px', width: '600px' }} id="stepsWrapper">
+            <Grid item>
+              <StepsContainer />
+            </Grid>
+            <Grid item container flex='auto' alignItems='flex-end' display='flex'>
+              <ButtonsBar />
+            </Grid>
+          </Grid>
         </Grid>
       </Card>
     </Grid>
