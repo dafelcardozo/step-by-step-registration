@@ -32,13 +32,11 @@ const TopStepsList = () => {
     alignItems="center"
     justifyContent="start"
     sx={{ bgcolor: '#483EFF' }} height='200px'>
-    <div>
-      <BlueCurve />
-      <Circle />
-      <Birds2 />
-      <PinkBlob />
-    </div>
-    <Stack direction='row' spacing={2} sx={{ paddingTop: '50px' }}>
+    <BlueCurve />
+    <Circle />
+    <Birds2 />
+    <PinkBlob />
+    <Stack direction='row' spacing={2} sx={{ paddingTop: '25px' }}>
       {steps.filter((s, index) => index < 4).map((title, index) => (
         <Item key={title}>
           <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : 'unset', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>
@@ -47,7 +45,6 @@ const TopStepsList = () => {
         </Item>
       ))}
     </Stack>
-
   </Grid>);
 };
 

@@ -6,7 +6,7 @@ import ProIcon from '../shared/icons/pro-icon';
 import { setIsYearly, setPlan } from '../shared/planSlice';
 import { ReduxState } from '../shared/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { goNext, goToStep, resetValidation } from '../shared/navigationSlice';
+import { goToStep, resetValidation } from '../shared/navigationSlice';
 
 import { styled } from "@mui/material/styles";
 
