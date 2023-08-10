@@ -46,10 +46,10 @@ export default function PersonalInfoForm() {
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
+                '& .MuiTextField-root': { m: 1 },
             }}
             noValidate
-            autoComplete="off"
+            autoComplete="off" 
         >
             <FormControl sx={{'.MuiOutlinedInput-root.Mui-focused fieldset': {borderColor:'#483EFF'}}}>
                 <Typography variant="h1">Personal info</Typography>
@@ -63,10 +63,11 @@ export default function PersonalInfoForm() {
                         dispatch(resetValidation(''));
                     } }
                     variant='outlined'
+
                     placeholder='e.g. Stephen King'
                     size="small"
                     error={nameError !== ''}
-                    helperText={nameError}
+                    helperText={nameError} fullWidth
                 />
                 <FormLabel>Email address</FormLabel>
                 <TextField
@@ -79,7 +80,7 @@ export default function PersonalInfoForm() {
                         dispatch(resetValidation(''));
                     } }
                     error={emailError !== ''}
-                    helperText={emailError}
+                    helperText={emailError} fullWidth
                 />
                 <FormLabel>Phone Number</FormLabel>
                 <TextField
@@ -92,7 +93,7 @@ export default function PersonalInfoForm() {
                         dispatch(resetValidation(''));
                     }}
                     error={phoneError !== ''}
-                    helperText={phoneError}
+                    helperText={phoneError} fullWidth
                 />
             </FormControl>
         </Box>

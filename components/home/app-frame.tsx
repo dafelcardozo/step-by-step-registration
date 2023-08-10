@@ -93,6 +93,36 @@ const Sidebar = () => {
   </StyledPaper>);
 };
 
+const LargeScreenFrame = () => (
+  <Card sx={{ p: 1, height: '600px' }} >
+    <Grid container sx={{ display: 'flex' }}  >
+      <Sidebar />
+      <Box sx={{ flexGrow: 1, p: 3, width: '500px' }} id="stepsWrapper">
+        <StepsContainer />
+      </Box>
+    </Grid>
+  </Card>
+);
+
+const SmallScreenFrame = () => (<>
+    <BackgroundFigures />
+    <Grid container direction="column" height='100vh' spacing={0}>
+    <Grid item>
+      <TopStepsList />
+    </Grid>
+    <Grid item paddingLeft='20px' paddingRight='20px'>
+      <Card sx={{ minHeight: '402px', p: 4 }}>
+        <StepsContainer />
+      </Card>
+    </Grid>
+    <Grid item flex='auto' display='flex' alignItems='flex-end'>
+      <ButtonsBar />
+    </Grid>
+  </Grid>
+</>
+);
+
+
 export default function AppFrame() {
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -102,35 +132,5 @@ export default function AppFrame() {
     dispatch(setExtraSmallSize(query));
   });
   const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
-
-  const LargeScreenFrame = () => (
-    <Card sx={{ p: 1, height: '600px' }} >
-      <Grid container sx={{ display: 'flex' }}  >
-        <Sidebar />
-        <Box sx={{ flexGrow: 1, p: 3, width: '500px' }} id="stepsWrapper">
-          <StepsContainer />
-        </Box>
-      </Grid>
-    </Card>
-  );
-
-  const SmallScreenFrame = () => (<>
-      <BackgroundFigures />
-      <Grid container direction="column" height='100vh' spacing={0}>
-      <Grid item>
-        <TopStepsList />
-      </Grid>
-      <Grid item paddingLeft='20px' paddingRight='20px'>
-        <Card sx={{ minHeight: '402px', p: 4 }}>
-          <StepsContainer />
-        </Card>
-      </Grid>
-      <Grid item flex='auto' display='flex' alignItems='flex-end'>
-        <ButtonsBar />
-      </Grid>
-    </Grid>
-  </>
-);
-
   return isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />;
 }
