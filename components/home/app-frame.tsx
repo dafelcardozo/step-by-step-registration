@@ -23,6 +23,14 @@ const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',
 }));
 
+const BackgroundFigures = () => (
+  <div style={{ backgroundColor: '#483EFF', position: 'absolute', zIndex:-1, width:'100vw' }} >
+    <BlueCurve />
+    <Circle />
+    <Birds2 />
+    <PinkBlob />
+  </div>);
+
 const TopStepsList = () => {
   const { step } = useSelector((state: ReduxState) => state.nav);
   return (<Grid
@@ -30,21 +38,20 @@ const TopStepsList = () => {
     spacing={0}
     direction="column"
     alignItems="center"
-    justifyContent="start"
-    sx={{ bgcolor: '#483EFF' }} height='200px'>
-    <BlueCurve />
-    <Circle />
-    <Birds2 />
-    <PinkBlob />
-    <Stack direction='row' spacing={2} sx={{ paddingTop: '25px' }}>
-      {steps.filter((s, index) => index < 4).map((title, index) => (
-        <Item key={title}>
-          <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : 'unset', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>
-            {index + 1}
-          </Avatar>
-        </Item>
-      ))}
-    </Stack>
+    justifyContent="center"
+    height='100px'
+  >
+    <Grid item>
+      <Stack direction='row' spacing={2} >
+        {steps.filter((s, index) => index < 4).map((title, index) => (
+          <Item key={title}>
+            <Avatar style={{ backgroundColor: index + 1 == step ? '#BEE2FD' : 'unset', color: index + 1 == step ? '#022959' : undefined, border: '1px solid lightgray' }}>
+              {index + 1}
+            </Avatar>
+          </Item>
+        ))}
+      </Stack>
+    </Grid>
   </Grid>);
 };
 
@@ -56,7 +63,7 @@ const StyledPaper = styled(Paper)({
   backgroundColor: '#483EFF',
   color: 'white',
   border: 0,
-  height: '580px',
+  // height: '580px',
   borderRadius: '16px',
 })
 
@@ -108,20 +115,22 @@ export default function AppFrame() {
   );
 
   const SmallScreenFrame = () => (<>
-    <TopStepsList />
-    <Box sx={{ display: 'flex', position: 'relative', top: '-125px' }}  >
-      <Box sx={{ flexGrow: 1, p: 3 }} id="stepsWrapper">
+      <BackgroundFigures />
+      <Grid container direction="column" height='100vh' spacing={0}>
+      <Grid item>
+        <TopStepsList />
+      </Grid>
+      <Grid item paddingLeft='20px' paddingRight='20px'>
         <Card sx={{ minHeight: '402px', p: 4 }}>
           <StepsContainer />
         </Card>
-      </Box>
-    </Box>
-    <ButtonsBar />
-  </>);
-
-  return <Grid container direction="column" alignItems="center" height='100vh' spacing={0} justifyContent="center">
-    <Grid item xs={3}>
-      {isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />}
+      </Grid>
+      <Grid item flex='auto' display='flex' alignItems='flex-end'>
+        <ButtonsBar />
+      </Grid>
     </Grid>
-  </Grid>;
+  </>
+);
+
+  return isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />;
 }
