@@ -39,7 +39,7 @@ function PlanButton({plan, icon}:PlanButtonProps) {
             {icon}
         </Grid>
         <Grid>
-            <Typography variant="subtitle2" className='plan_title'>{plan}</Typography>
+            <Typography variant="subtitle2" className='capitalize'>{plan}</Typography>
             <div>${planPricing[plan]}/{periodAbbrev}</div>
             {is_yearly && <div>2 months free</div>}
         </Grid>

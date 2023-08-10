@@ -26,7 +26,7 @@ function AddOnRow({ description, monthlyPrice }: AddOnRowProps) {
 
 export default function Summary() {
     const dispatch = useDispatch();
-    const { plan, is_yearly, periodAbbrev, period } = useSelector((state: ReduxState) => state.planInfo);
+    const { plan, is_yearly, periodAbbrev, period, periodAdverb } = useSelector((state: ReduxState) => state.planInfo);
     const { customizableProfile, largerStorage, onlineService } = useSelector((state: ReduxState) => state.addOns);
     const pricing = is_yearly ? yearlyPlanPricing : monthlyPlanPricing;
     const planPricing = pricing[plan];
@@ -39,9 +39,9 @@ export default function Summary() {
         <Typography variant="h1">Finishing up</Typography>
         <Typography variant="subtitle1">Double-check everything looks OK before confirming.</Typography>
         <Paper sx={{ bgcolor: '#F8F9FF' }} elevation={0}>
-            <Grid container rowSpacing={1} columnSpacing={{  xs:8, md: 4 }} >
-                <Grid item xs={6} className='plan_title' >
-                    <Typography variant="subtitle2">{plan} ({is_yearly ? 'Yearly' : 'Monthly'})</Typography>
+            <Grid container rowSpacing={1} columnSpacing={{  xs:6}} >
+                <Grid item xs={6} className='capitalize' >
+                    <Typography variant="subtitle2">{plan} ({periodAdverb})</Typography>
                     <Link onClick={() => dispatch(goToStep(2))}>Change</Link>
                 </Grid>
                 <Grid item xs={6} sx={{textAlign:'right'}}>
@@ -53,11 +53,11 @@ export default function Summary() {
                 {customizableProfile && <AddOnRow description="Customizable profile" monthlyPrice={2} />}
             </Grid>
         </Paper>
-        <Grid container rowSpacing={2} columnSpacing={{ xs:8, md: 4 }} paddingTop='20px'>
-            <Grid item xs={8}>
+        <Grid container paddingTop='20px' columnSpacing={{ xs:6, md: 6 }}>
+            <Grid item xs={6}>
                 Total (per {period})
             </Grid>
-            <Grid item xs={4} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }}>+${bigSum}/{periodAbbrev}</Grid>
+            <Grid item xs={6} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }}>+${bigSum}/{periodAbbrev}</Grid>
         </Grid>
     </Box>);
 }

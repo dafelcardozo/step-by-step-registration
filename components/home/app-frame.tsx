@@ -24,7 +24,7 @@ const Item = styled(Box)(({ theme }) => ({
 }));
 
 const BackgroundFigures = () => (
-  <div style={{ backgroundColor: '#483EFF', position: 'absolute', zIndex:-1, width:'100vw' }} >
+  <div style={{ backgroundColor: '#483EFF', position: 'absolute', zIndex: -1, width: '100vw' }} >
     <BlueCurve />
     <Circle />
     <Birds2 />
@@ -94,10 +94,10 @@ const Sidebar = () => {
 };
 
 const LargeScreenFrame = () => (
-  <Card sx={{ p: 1, height: '600px' }} >
+  <Card sx={{ p: 1, maxWidth: '900px', maxHeight:'800px', width: '900px' }} >
     <Grid container sx={{ display: 'flex' }}  >
       <Sidebar />
-      <Box sx={{ flexGrow: 1, p: 3, width: '500px' }} id="stepsWrapper">
+      <Box sx={{ flexGrow: 1, p: 3, height:'600px', width:'600px' }} id="stepsWrapper">
         <StepsContainer />
       </Box>
     </Grid>
@@ -105,8 +105,8 @@ const LargeScreenFrame = () => (
 );
 
 const SmallScreenFrame = () => (<>
-    <BackgroundFigures />
-    <Grid container direction="column" height='100vh' spacing={0}>
+  <BackgroundFigures />
+  <Grid container direction="column" height='100vh' spacing={0}>
     <Grid item>
       <TopStepsList />
     </Grid>
