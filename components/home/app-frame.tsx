@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Stack, Avatar, ListItemText, ListItemButton, ListItem, List, ListItemAvatar, Box, Drawer, styled, Grid, Card, Paper } from '@mui/material';
 import StepsContainer from './steps-container';
-import { ButtonsBar } from './buttons-bar';
+import ButtonsBar from './buttons-bar';
 import { useSelector, useDispatch } from 'react-redux';
 import { ReduxState } from '@/components/shared/store';
 import OrangeMountain from '../shared/icons/orange-mountain';
