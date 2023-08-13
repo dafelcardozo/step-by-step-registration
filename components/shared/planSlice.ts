@@ -31,13 +31,13 @@ export const planSelectionSlice = createSlice({
     setIsYearly(state, action) {
         state.is_yearly = action.payload;
         if (state.is_yearly) {
-          state.periodAbbrev = 'mo';
-          state.period = 'month';
-          state.periodAdverb = 'monthly';
-        } else {
           state.periodAbbrev = 'yr';
           state.period = 'year';
           state.periodAdverb = 'yearly';
+        } else {
+          state.periodAbbrev = 'mo';
+          state.period = 'month';
+          state.periodAdverb = 'monthly';
         }
     }
   }
