@@ -11,7 +11,7 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { console.info({name, email, phone}) })
+//Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { console.info({name, email, phone}) })
 //
 //
 // -- This is a child command --
@@ -35,3 +35,4 @@ Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { console.info(
 //     }
 //   }
 // }
+export {}
