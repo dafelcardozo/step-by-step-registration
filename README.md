@@ -31,6 +31,7 @@ The app was initiated from a template on https://precedent.dev by Steven Tey ([@
 - [Next.js](https://nextjs.org/) – A React + Node framework for building performant fullstack apps with the best developer experience.
 - [Material UI](https://mui.com/material-ui/getting-started/) - A beautiful design that features a lot of React components to build a nice user interface.
 - [Vercel](https://vercel.com/) – A deployment platform for Next.js and React applications
+- [Cypress] A JS framework to easely create automated end-to-end tests and run them locally and on the CI.
 
 ### Components
 
