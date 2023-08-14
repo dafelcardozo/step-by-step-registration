@@ -7,12 +7,9 @@ describe('Multi-step form', () => {
   })
 
   it('Best buyer flow: p.i. form typed with no validations, all add-ons to yearly plan, reaches the thank you screen', () => {
-    cy.contains('Personal info');
     cy.wait(3000);
-    cy.get("input[name=name]").type("Pepito Perez");
-    cy.get("input[name=email]").type("pepito@perez.com");
-    cy.get("input[name=phone]").type("1234567890");
-    cy.contains('Next Step').click();
+    cy.fillPersonalInfo("Pepito Perez", "pepito@perez.com", "1234567890")
+     .nextStep();
 
     cy.contains('Select your plan');
     cy.get("#stepsWrapper button:nth-child(3)").click();
@@ -32,4 +29,46 @@ describe('Multi-step form', () => {
     cy.contains("Thank you!")
   })
 
+
+  it('Validation flow: all form validations triggered on personal info and plan selection screens, and then corrected', () => {
+    cy.wait(3000);
+    cy.nextStep();
+
+    cy.contains('This field is required')
+    cy.contains('Personal info')
+    cy.get("input[name=name]").type("Pepito Perez")
+    cy.nextStep()
+    
+    cy.contains('This field is required')
+    cy.contains('Personal info');
+    cy.get("input[name=email]").type("incomplete-email");
+    cy.nextStep()
+    cy.contains("Email input is wrong")
+    cy.get("input[name=email]").clear().type("someone@somewhere.com");
+    cy.nextStep()
+
+    cy.contains('This field is required')
+    cy.get("input[name=phone]").type("abcdefgh");
+    cy.nextStep()
+    cy.contains("Phone input is wrong")
+    cy.get("input[name=phone]").clear().type('1234567890')
+    cy.nextStep()
+
+    cy.contains("Select your plan");
+    cy.nextStep()
+    cy.contains("You need to select a plan")
+    cy.get("#stepsWrapper button:nth-child(3)").click();
+    cy.nextStep()
+
+    cy.contains("Pick add-ons");
+    cy.nextStep()
+
+    cy.contains("Finishing up");
+    cy.get("#bigTotal").contains('+$15/mo')
+    cy.contains("Confirm").click();
+    
+    cy.contains("Thank you!")
+
+  })
+ 
 })

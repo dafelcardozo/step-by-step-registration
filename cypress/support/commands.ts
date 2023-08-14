@@ -8,10 +8,18 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-//Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { console.info({name, email, phone}) })
+
+Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { 
+    cy.contains('Personal info');
+    cy.get("input[name=name]").type(name);
+    cy.get("input[name=email]").type(email);
+    cy.get("input[name=phone]").type(phone);
+ })
+
+ Cypress.Commands.add('nextStep', () => {
+    cy.contains('Next Step').click();
+ })
+
 //
 //
 // -- This is a child command --
@@ -25,14 +33,12 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+declare global {
+  namespace Cypress {
+    interface Chainable {
+        fillPersonalInfo(name: string, email: string, phone: string): Chainable<void>,
+        nextStep(): Chainable<void>
+    }
+  }
+}
 export {}
