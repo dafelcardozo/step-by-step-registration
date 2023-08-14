@@ -42,3 +42,7 @@ The app uses a single page model, that contains the following components:
 - the personal info form, the 'select a plan' step, the 'pick add-ons' step,  the summary and thank you steps.
 - the current steps navigation bar, in two variants: as a sidebar on desktop displays or as a 'horizontal stack' anchored to the top of the screen on mobile screens.
 - the Redux store and its different 'slices': add-ons, navigation, personal info and plan.
+
+### [NEW] End-to-end tests
+
+End-to-end tests of the app are provided through Cypress. The simplest navigation cases are covered.
