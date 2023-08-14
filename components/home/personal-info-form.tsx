@@ -63,6 +63,7 @@ export default function PersonalInfoForm() {
                     size="small"
                     error={nameError !== ''}
                     helperText={nameError} fullWidth
+                    name='name'
                 />
                 <FormLabel>Email address</FormLabel>
                 <TextField
@@ -76,6 +77,8 @@ export default function PersonalInfoForm() {
                     } }
                     error={emailError !== ''}
                     helperText={emailError} fullWidth
+                    name="email"
+                    type='email'
                 />
                 <FormLabel>Phone Number</FormLabel>
                 <TextField
@@ -89,6 +92,8 @@ export default function PersonalInfoForm() {
                     }}
                     error={phoneError !== ''}
                     helperText={phoneError} fullWidth
+                    name="phone"
+                    type='tel'
                 />
             </FormControl>
         </Box>
