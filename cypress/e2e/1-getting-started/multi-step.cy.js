@@ -6,7 +6,7 @@ describe('Multi-step form', () => {
     cy.visit('http://localhost:3000')
   })
 
-  it('Displays the personal info form by default', () => {
+  it('Best buyer flow: p.i. form typed with no validations, all add-ons to yearly plan, reaches the thank you screen', () => {
     cy.contains('Personal info');
     cy.wait(3000);
     cy.get("input[name=name]").type("Pepito Perez");
