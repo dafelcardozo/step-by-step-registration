@@ -45,4 +45,7 @@ The app uses a single page model, that contains the following components:
 
 ### [NEW] End-to-end tests
 
-End-to-end tests of the app are provided through Cypress. The simplest navigation cases are covered.
+End-to-end tests of the app are provided through Cypress. Two cases are covered: 
+
+- the user fills the personal info form and chooses a yearly 'pro' plan with all add-ons. No validations are triggered.
+- the user triggers all validations available, both in the personal info form and the plan selection screen. 
