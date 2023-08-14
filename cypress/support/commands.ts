@@ -11,7 +11,7 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+Cypress.Commands.add('fillPersonalInfo', (name, email, phone) => { console.info({name, email, phone}) })
 //
 //
 // -- This is a child command --
