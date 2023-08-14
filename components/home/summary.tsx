@@ -57,7 +57,7 @@ export default function Summary() {
             <Grid item xs={6}>
                 Total (per {period})
             </Grid>
-            <Grid item xs={6} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }}>+${bigSum}/{periodAbbrev}</Grid>
+            <Grid item xs={6} sx={{ color: '#483EFF', fontWeight: '700', fontSize: '16px', textAlign: 'right' }} id="bigTotal">+${bigSum}/{periodAbbrev}</Grid>
         </Grid>
     </Box>);
 }
