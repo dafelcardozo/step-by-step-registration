@@ -103,7 +103,7 @@ const LargeScreenFrame = () => (
             <Grid item>
               <StepsContainer />
             </Grid>
-            <Grid item height='100%' alignContent='end' alignItems='end' display='flex'>
+            <Grid item height='100%' alignContent='end' alignItems='end' display='flex' xs={1}>
               <ButtonsBar />
             </Grid>
           </Grid>
