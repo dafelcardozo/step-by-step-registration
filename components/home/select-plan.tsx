@@ -13,13 +13,9 @@ import { styled } from "@mui/material/styles";
 const StyledToggleButton = styled(ToggleButton)({
     textAlign:'unset',
     textTransform: 'unset',
-    // button: {
-    //     borderRadius:'8px !important'
-    // },
     "&.Mui-selected, &.Mui-selected:hover": {
         backgroundColor: '#F8F9FF',
-        borderColor: '#483EFF',
-   //     borderRadius: '8px !important',
+        borderColor: '#483EFF'
     }
 });
 
@@ -58,7 +54,7 @@ function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
             Monthly
         </Grid>
         <Grid item>
-            <Switch checked={checked} onChange={(e, checked) => onChange(checked)} />
+            <Switch checked={checked} onChange={(_, checked) => onChange(checked)} />
         </Grid>
         <Grid item className={checked?'is_checked':undefined} onClick={() => onChange(!checked)}>
             Yearly
@@ -69,7 +65,7 @@ function DoubleLabeledSwitch({checked, onChange}:CheckedProps) {
 export default function SelectYourPlan() {
     const { plan, is_yearly } = useSelector((state: ReduxState) => state.planInfo);
     const dispatch = useDispatch();
-    const { step, is_valid_step, isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
+    const { step, is_valid_step, isSmallSize } = useSelector((state: ReduxState) => state.nav);
     const [planError, setPlanError] = useState('');
     useEffect(() => {
         if (step == 2 && is_valid_step === 'validating') {
@@ -84,7 +80,7 @@ export default function SelectYourPlan() {
         <FormControl error={planError !== ''}>
             <Typography variant="h1">Select your plan</Typography>
             <Typography variant="subtitle1">You have the option of monthly or yearly billing.</Typography>
-            <ToggleButtonGroup color="primary" orientation={isExtraSmallSize ? 'vertical' : undefined}
+            <ToggleButtonGroup color="primary" orientation={isSmallSize ? 'vertical' : undefined}
                 value={plan}
                 exclusive
                 onChange={(_, selection) => {

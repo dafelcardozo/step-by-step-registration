@@ -139,6 +139,6 @@ export default function AppFrame() {
   useEffect(() => {
     dispatch(setExtraSmallSize(query));
   });
-  const { isExtraSmallSize } = useSelector((state: ReduxState) => state.nav);
-  return isExtraSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />;
+  const { isSmallSize } = useSelector((state: ReduxState) => state.nav);
+  return isSmallSize ? <SmallScreenFrame /> : <LargeScreenFrame />;
 }

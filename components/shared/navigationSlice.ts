@@ -7,7 +7,7 @@ export interface NavigationState {
   hasNext: boolean,
   nSteps: number,
   is_valid_step: string,
-  isExtraSmallSize:boolean
+  isSmallSize:boolean
 }
 
 const initialState: NavigationState = {
@@ -16,7 +16,7 @@ const initialState: NavigationState = {
   hasNext:true,
   nSteps: 5,
   is_valid_step: 'invalid',
-  isExtraSmallSize: true
+  isSmallSize: true
 };
 
 function setButtonsVisibility(state:any) {
@@ -50,8 +50,8 @@ export const navigationSlice = createSlice({
       state.is_valid_step = 'invalid';
     },
     setExtraSmallSize(state, action){
-      if (state.isExtraSmallSize != action.payload)
-        state.isExtraSmallSize = action.payload;
+      if (state.isSmallSize != action.payload)
+        state.isSmallSize = action.payload;
     }
   }
 });
