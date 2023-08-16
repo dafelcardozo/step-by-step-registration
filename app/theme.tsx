@@ -1,6 +1,6 @@
 'use client';
 import { createTheme } from '@mui/material/styles';
-import { pink, blueGrey, yellow } from '@mui/material/colors';
+import { blueGrey, yellow } from '@mui/material/colors';
 
 export const theme = createTheme({
   components: {
@@ -48,9 +48,7 @@ export const theme = createTheme({
       color:'#022959',
       fontWeight:'bolder',
       fontSize: '16px',
-      lineHeight:"18.38px",
-//      paddingTop:'15px',
-//      paddingBottom:'15px'
+      lineHeight:"18.4px",
     }
   }
 });

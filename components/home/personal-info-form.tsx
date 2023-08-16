@@ -1,5 +1,5 @@
 "use client";
-import {ChangeEvent, useEffect, useState} from 'react';
+import {ChangeEvent, useEffect, useState, useRef} from 'react';
 import { FormControl, TextField, FormLabel, Typography, Box } from '@mui/material';
 import { ReduxState } from '../shared/store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,7 +14,6 @@ export default function PersonalInfoForm() {
     const [nameError, setNameError] = useState('');
     const [emailError, setEmailError] = useState('');
     const [phoneError, setPhoneError] = useState('');
-
     useEffect(() => {
         if (step == 1 && is_valid_step === 'validating') {
             if (!name) {
@@ -40,7 +39,7 @@ export default function PersonalInfoForm() {
             dispatch(goToStep(2));
         }
 
-    }, [step, is_valid_step])
+    }, [step, is_valid_step]);
     return (
         <Box
             component="form"
@@ -64,6 +63,7 @@ export default function PersonalInfoForm() {
                     error={nameError !== ''}
                     helperText={nameError} fullWidth
                     name='name'
+                    autoFocus={true}
                 />
                 <FormLabel>Email address</FormLabel>
                 <TextField

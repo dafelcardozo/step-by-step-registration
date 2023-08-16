@@ -16,7 +16,7 @@ const initialState: NavigationState = {
   hasNext:true,
   nSteps: 5,
   is_valid_step: 'invalid',
-  isSmallSize: true
+  isSmallSize: false
 };
 
 function setButtonsVisibility(state:any) {
