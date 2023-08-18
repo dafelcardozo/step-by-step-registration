@@ -3,7 +3,7 @@
 ## Description
 
 This is the code repository of my 'step-by-step game subscription app', a test prototype built as my solution for the 'Frontend Test Challenge' by Conserva. You may see it here:
-http://david-felipe-cardozo.com.co/ .
+https://www.david-felipe-cardozo.com.co/ .
 
 ## Deployment environment
 
@@ -45,7 +45,9 @@ The app uses a single page model, that contains the following components:
 
 ### [NEW] End-to-end tests
 
-End-to-end tests of the app are provided through the Cypress framework (local only). Two cases are covered: 
+End-to-end tests of the app are provided through the Cypress framework (local only). Two flows are covered: 
 
 - the user fills the personal info form and chooses a yearly 'pro' plan with all add-ons. No validations are triggered.
-- the user triggers all validations available, both in the personal info form and the plan selection screen. 
+- the user triggers all validations available, both in the personal info form and the plan selection screen.
+
+Both the mobile and desktop views are validated.
